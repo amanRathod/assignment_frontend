@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dark-base {
+    @apply dark:bg-darkMode-base dark:text-white;
+  }
+  .dark-primary {
+    @apply dark:bg-darkMode-primary dark:text-white;
+  }
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-five focus:ring-opacity-60
+  }
+  
+  .btn {
+    @apply py-2 max-w-xs px-4 mr-4 mt-4 font-bold rounded-2xl bg-purple-five text-white tracking-tighter text-base focus:outline-none  focus:ring-2 focus:ring-offset-2 duration-500 focus:ring-purple-seven;
+  }
+  .row {
+    @apply flex justify-around space-x-2 ;
+  }
+  
+  .col {
+    @apply flex flex-col items-center justify-center;
+  }
+  .grids {
+    @apply grid grid-cols-6 gap-4;
+  }
+  .box1 {
+    @apply flex items-center justify-center;
+  }
+  .box2 {
+    @apply w-96 col h-auto box1 border-gray-base border-opacity-10 p-4  border-2;
+  }
+  .large-x-y {
+    @apply lg:px-8 lg:py-6;
+  }
+  .table-x-y {
+    @apply px-3 py-3;
+  }
+  
+  .card-rounded {
+    @apply rounded-2xl shadow-2xl;
+  }
+  .dark-eight {
+    @apply text-purple-eight dark:text-purple-one
+  }
+  .dark-nine {
+    @apply text-purple-nine dark:text-purple-two
+  }  
+  .error {
+    @apply text-red-primary mb-3 break-normal;
+  }
+  .header {
+    @apply mx-auto px-4  bg-headerWhite  dark-base shadow-lg  text-center text-xl font-bold tracking-tighter;
+  }
+  .hamburger {
+    @apply w-6 h-6 text-gray-base hover:text-purple-five;
+  }
+  .underline-link {
+    @apply  border-b-4 cursor-pointer border-headerWhite  hover:border-purple-five dark:hover:border-purple-five dark:border-darkMode-base duration-500;
+  }
+  .text-color {
+    @apply dark-nine text-lg font-semibold ;
+  }
+  .grid-element {
+    @apply grid max-w-screen-xl px-6 mx-auto lg:px-8 xl:px-4 md:grid-cols-4 xl:grid-cols-5 gap-x-12 lg:gap-x-20
+  }
+  .heading-hero {
+    @apply text-4xl text-gray-base dark-base md:text-4xl lg:text-5xl md:mb-4 lg:mb-8
+  }
+  .icon {
+      @apply h-10 px-3 dark:bg-grey-six rounded-lg hover:bg-grey-fifty dark:hover:bg-grey-six focus:bg-grey-fifty dark:focus:bg-grey-seven 
+    }
+}  

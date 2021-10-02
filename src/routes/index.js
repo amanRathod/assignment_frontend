@@ -1,0 +1,44 @@
+import React, { useState, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import * as ROUTES from '../constants/routes';
+import Theme from '../constants/theme';
+import ThemeContext from '../utilities/context/theme';
+
+const PrivateRoute = lazy(() => import('./private-route'));
+const PublicRoute = lazy(() => import('./public-route'));
+
+const Login = lazy(() => import('../views/public/login'));
+const Home = lazy(() => import('../views/public/home'));
+const Register = lazy(() => import('../views/public/register'));
+const ForgotPassword = lazy(() => import('../views/public/forgot-password'));
+const ResetPassword = lazy(() => import('../views/public/set-password'));
+const Dashboard = lazy(() => import('../views/private/dashboard'));
+
+const load = () => (
+  <div>
+    <h1>Loading...</h1>
+  </div>
+);
+
+const App = () => {
+  const [state, setState] = useState();
+  const { theme, setTheme } = Theme();
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Router>
+        <Suspense fallback={load()}>
+          <Switch>
+            <PublicRoute exact path={ROUTES.LOGIN} component={Login} />
+            <PublicRoute exact path={ROUTES.HOME} component={Home} />
+            <PublicRoute exact path={ROUTES.REGISTER} component={Register} />
+            <PublicRoute exact path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
+            <PublicRoute exact path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
+            <PrivateRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
+          </Switch>
+        </Suspense>
+      </Router>
+    </ThemeContext.Provider>
+  );
+};
+
+export default App;
