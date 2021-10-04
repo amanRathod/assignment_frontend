@@ -84,5 +84,17 @@
   .sidebar-nav {
     @apply flex items-end px-4 py-3 space-x-2 font-bold dark:bg-darkMode-base dark:text-purple-two text-purple-nine bg-white hover:bg-purple-one transition-colors duration-100 rounded-lg dark:hover:bg-darkMode-primary text-opacity-70 hover:text-opacity-100
   }
+  .input-control2 {
+    @apply dark-nine bg-white dark:bg-grey-six placeholder-purple-nine dark:placeholder-purple-two rounded-lg pl-9 placeholder-opacity-70 focus-ring;
+  }
+  .bg-current-Navbar {
+    @apply bg-purple-fifty dark:bg-darkMode-primary
+  }
+  .hover {
+    @apply hover:bg-purple-fifty dark:hover:bg-darkMode-primary
+  }
+  .box-border {
+    @apply border border-purple-one rounded-lg hover
+  }
   
 }  
