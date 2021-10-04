@@ -60,6 +60,9 @@
   .underline-link {
     @apply  border-b-4 cursor-pointer border-headerWhite  hover:border-purple-five dark:hover:border-purple-five dark:border-darkMode-base duration-500;
   }
+  .input-control {
+    @apply w-80 bg-purple-fifty border-gray-base border-opacity-50 border-2 rounded-2xl p-2 mb-2  focus-ring
+  }
   .text-color {
     @apply dark-nine text-lg font-semibold ;
   }

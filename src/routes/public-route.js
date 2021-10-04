@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
+import UserContext from '../utilities/context/user';
 
 const PublicRoute = ({ component: Component, ...rest }) => {
-  const user = false;
+  const { user } = useContext(UserContext);
+  const userType = localStorage.getItem('user_type');
   return (
     <Route
       {...rest}
-      render={(props) => (user ? <Redirect to={ROUTES.HOME} /> : <Component {...props} />)}
+      render={(props) =>
+        user ? <Redirect to={`/${userType}/dashboard`} /> : <Component {...props} />
+      }
     />
   );
 };

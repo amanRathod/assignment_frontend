@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const user = false;
+  const user = localStorage.getItem('user');
   return (
     <Route
       {...rest}

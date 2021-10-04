@@ -1,8 +1,10 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import Theme from '../constants/theme';
 import ThemeContext from '../utilities/context/theme';
+import UserAuthListener from '../constants/user-auth-listener';
+import UserContext from '../utilities/context/user';
 
 const PrivateRoute = lazy(() => import('./private-route'));
 const PublicRoute = lazy(() => import('./public-route'));
@@ -13,6 +15,7 @@ const Register = lazy(() => import('../views/public/register'));
 const ForgotPassword = lazy(() => import('../views/public/forgot-password'));
 const ResetPassword = lazy(() => import('../views/public/set-password'));
 const Dashboard = lazy(() => import('../views/private/dashboard'));
+const PersonalDetails = lazy(() => import('../views/private/personal-details'));
 
 const load = () => (
   <div>
@@ -21,23 +24,27 @@ const load = () => (
 );
 
 const App = () => {
-  const [state, setState] = useState();
+  const user = UserAuthListener();
+  console.log('userrr', user);
   const { theme, setTheme } = Theme();
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Router>
-        <Suspense fallback={load()}>
-          <Switch>
-            <PublicRoute exact path={ROUTES.LOGIN} component={Login} />
-            <PublicRoute exact path={ROUTES.HOME} component={Home} />
-            <PublicRoute exact path={ROUTES.REGISTER} component={Register} />
-            <PublicRoute exact path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
-            <PublicRoute exact path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
-            <PrivateRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
-          </Switch>
-        </Suspense>
-      </Router>
-    </ThemeContext.Provider>
+    <UserContext.Provider value={{ user }}>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <Router>
+          <Suspense fallback={load()}>
+            <Switch>
+              <PublicRoute exact path={ROUTES.LOGIN} component={Login} />
+              <PublicRoute exact path={ROUTES.HOME} component={Home} />
+              <PublicRoute exact path={ROUTES.REGISTER} component={Register} />
+              <PublicRoute exact path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
+              <PublicRoute exact path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
+              <PrivateRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
+              <PrivateRoute exact path={ROUTES.PERSONAL_DETAILS} component={PersonalDetails} />
+            </Switch>
+          </Suspense>
+        </Router>
+      </ThemeContext.Provider>
+    </UserContext.Provider>
   );
 };
 
