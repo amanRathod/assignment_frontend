@@ -1,11 +1,11 @@
 import React from 'react';
+import Lists from './list';
 
 const All = () => {
   const [state, setState] = React.useState({});
   return (
     <div>
-      <h1>All</h1>
-      <p> This is All </p>
+      <Lists />
     </div>
   );
 };

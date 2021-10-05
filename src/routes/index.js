@@ -16,6 +16,7 @@ const ForgotPassword = lazy(() => import('../views/public/forgot-password'));
 const ResetPassword = lazy(() => import('../views/public/set-password'));
 const Dashboard = lazy(() => import('../views/private/dashboard'));
 const PersonalDetails = lazy(() => import('../views/private/personal-details'));
+const Students = lazy(() => import('../pages/student'));
 
 const load = () => (
   <div>
@@ -39,6 +40,7 @@ const App = () => {
               <PublicRoute exact path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
               <PrivateRoute exact path={ROUTES.DASHBOARD} component={Dashboard} />
               <PrivateRoute exact path={ROUTES.PERSONAL_DETAILS} component={PersonalDetails} />
+              <PrivateRoute exact path={ROUTES.STUDENTS} component={Students} />
             </Switch>
           </Suspense>
         </Router>

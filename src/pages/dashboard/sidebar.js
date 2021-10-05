@@ -1,16 +1,20 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { LogoutIcon, UsersIcon } from '@heroicons/react/solid';
 import UserContext from '../../utilities/context/user';
 import * as ROUTES from '../../constants/routes';
 import DarkMode from '../../components/public/dark_mode';
 import UserDataContext from '../../utilities/context/userData';
+import notify from '../../components/public/notification';
 
 const Sidebar = ({ toggle }) => {
+  const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useContext(UserContext);
   const userType = localStorage.getItem('user_type');
-  console.log('userType', userType);
   const { state } = useContext(UserDataContext);
 
   useEffect(() => {
@@ -21,6 +25,20 @@ const Sidebar = ({ toggle }) => {
       setIsOpen('block');
     }
   }, [toggle]);
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      localStorage.clear();
+      history.push('/login');
+      notify({
+        type: 'success',
+        message: 'Logout successfully'
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div
@@ -47,29 +65,21 @@ const Sidebar = ({ toggle }) => {
               </a>
             </li>
             <li className={`${userType === 'TA' && 'hidden'}`}>
-              <a href={ROUTES.DASHBOARD} className="sidebar-nav">
-                <svg
-                  className="w-6 h-6 text-purple-seven"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                </svg>
+              <a href={ROUTES.TA} className="sidebar-nav">
+                <UsersIcon className="w-6 h-6 text-purple-seven" />
                 <span className="flex-1">Teaching Assistant</span>
               </a>
             </li>
             <li className={`${userType === 'Student' && 'hidden'}`}>
-              <a href={ROUTES.DASHBOARD} className="sidebar-nav">
-                <svg
-                  className="w-6 h-6 text-purple-seven"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                </svg>
+              <a href={ROUTES.STUDENTS} className="sidebar-nav">
+              <UsersIcon className="w-6 h-6 text-purple-seven" />
                 <span className="flex-1">Students</span>
+              </a>
+            </li>
+            <li>
+              <a onClick={handleLogout} aria-hidden="true" className="sidebar-nav cursor-pointer">
+               <LogoutIcon className="w-6 h-6 text-purple-seven" />
+                <span className="flex-1">Logout</span>
               </a>
             </li>
             <li>

@@ -3,10 +3,11 @@ import MobileBar from '../../pages/dashboard/mobile-bar';
 import Sidebar from '../../pages/dashboard/sidebar';
 import Dashboard from '../../pages/dashboard';
 import UserDataContext from '../../utilities/context/userData';
-import { GetUserData } from '../../services/user';
+import { GetStudentData, GetTAData, GetAdminData } from '../../services/user';
 
 const DashboardView = () => {
   const [toggle, setToggle] = useState(true);
+  const userType = localStorage.getItem('user_type');
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -28,6 +29,9 @@ const DashboardView = () => {
       case 'institute': {
         return { ...state, [action.fieldName]: action.payload };
       }
+      case 'students': {
+        return { ...state, [action.fieldName]: action.payload };
+      }
       default: {
         return state;
       }
@@ -39,36 +43,48 @@ const DashboardView = () => {
     registration_no: '',
     institute: '',
     avatar: '',
-    assignment: {},
+    assignment: [],
     teaching_assistant: {},
-    submissions: {}
+    submissions: {},
+    students: {}
   };
 
   const [state, dispatch] = useReducer(reducer, InitialState);
+  console.log('state', state);
 
   const fetchData = async () => {
     try {
       // get logged-In user Data
-      const response = await GetUserData();
+      let response;
+      if (userType === 'Student') {
+        response = await GetStudentData();
+      } else if (userType === 'TA') {
+        response = await GetTAData();
+      } else {
+        response = await GetAdminData();
+      }
+
       // destructure response data
-      const { studentData, ta, assignments, submissions } = response;
+      const { data, ta, assignments, submissions, students } = response;
+      console.log('response', response);
 
       // store the response data to their respective state
-      dispatch({ type: 'name', fieldName: 'name', payload: studentData.name });
+      dispatch({ type: 'name', fieldName: 'name', payload: data.name });
       dispatch({
         type: 'registration_no',
         fieldName: 'registration_no',
-        payload: studentData.registration_no
+        payload: data.registration_no
       });
-      dispatch({ type: 'institute', fieldName: 'institute', payload: studentData.institute });
+      dispatch({ type: 'institute', fieldName: 'institute', payload: data.institute });
       dispatch({ type: 'assignment', fieldName: 'assignment', payload: assignments });
-      dispatch({ type: 'avatar', fieldName: 'avatar', payload: studentData.avatar });
+      dispatch({ type: 'avatar', fieldName: 'avatar', payload: data.avatar });
       dispatch({
         type: 'teaching_assistant',
         fieldName: 'teaching_assistant',
         payload: ta
       });
       dispatch({ type: 'submissions', fieldName: 'submissions', payload: submissions });
+      dispatch({ type: 'students', fieldName: 'students', payload: students });
     } catch (error) {
       console.log(error);
     }

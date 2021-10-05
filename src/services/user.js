@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const studentlink = 'http://localhost:5000/api/v1/student';
-const userlink = 'http://localhost:5000/api/v1/user';
+const link = 'http://localhost:5000/api/v1';
 
 const token = localStorage.getItem('accessToken');
+console.log('topken', token);
+
 const { user } = localStorage.getItem('user');
 const config = {
   headers: {
@@ -14,16 +15,34 @@ const config = {
 
 export async function UserUpdate(data) {
   try {
-    const response = await axios.put(`${userlink}/updateProfile`, data, config);
+    const response = await axios.put(`${link}/user/updateProfile`, data, config);
     return response.data;
   } catch (err) {
     console.log(err);
   }
 }
 
-export async function GetUserData() {
+export async function GetStudentData() {
   try {
-    const response = await axios.get(studentlink, config);
+    const response = await axios.get(`${link}/student`, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function GetTAData() {
+  try {
+    const response = await axios.get(`${link}/TA`, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function GetAdminData() {
+  try {
+    const response = await axios.get(`${link}/admin`, config);
     return response.data;
   } catch (err) {
     console.log(err);
