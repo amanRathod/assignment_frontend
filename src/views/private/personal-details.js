@@ -48,7 +48,6 @@ const PersonalDetails = () => {
 
   useEffect(() => {
     document.title = 'Personal Details';
-    console.log('perosnal');
   }, []);
   return (
     <>

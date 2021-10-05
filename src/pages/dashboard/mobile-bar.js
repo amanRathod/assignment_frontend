@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React, { useContext } from 'react';
-import UserContext from '../../utilities/context/user';
+import UserDataContext from '../../utilities/context/userData';
 
 const MobileBar = ({ setToggle, toggle }) => {
-  const { user } = useContext(UserContext);
-  const avatar = localStorage.getItem('avatar');
+  const { state } = useContext(UserDataContext);
 
   const handleTOggle = (e) => {
     e.preventDefault();
@@ -49,8 +48,8 @@ const MobileBar = ({ setToggle, toggle }) => {
         </g>
       </svg>
       <button type="submit" className="box1 space-x-2 xl:justify-start focus-ring">
-        <span className="text-xs font-bold text-purple-one">{user}</span>
-        <img src={avatar} alt={`${user}`} className="w-10 h-10 rounded-full" />
+        <span className="text-xs font-bold text-purple-one">{state.name}</span>
+        <img src={state.avatar} alt="IMG" className="w-10 h-10 rounded-full" />
       </button>
     </div>
   );

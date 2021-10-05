@@ -8,7 +8,7 @@ import * as ROUTES from '../../constants/routes';
 import FormInputPassword from '../../components/input/password';
 import ValidateConfirmPassword from '../../utilities/validation/confirm-password';
 import notify from '../../components/public/notification';
-import { UserResetPassword } from '../../services/user';
+import { UserResetPassword } from '../../services/auth';
 import ValidatePassword from '../../utilities/validation/password';
 
 const SetPasswordView = () => {

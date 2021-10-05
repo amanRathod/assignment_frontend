@@ -4,8 +4,6 @@ import ThemeContext from '../../utilities/context/theme';
 
 const DarkMode = () => {
   const { theme, setTheme } = useContext(ThemeContext);
-  console.log(theme);
-  console.log(setTheme);
 
   return (
     <div className="transition duration-500 ease-in-out rounded-full p-2">

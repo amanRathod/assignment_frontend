@@ -9,7 +9,7 @@ import FormInputName from '../../components/input/name';
 import ValidateEmail from '../../utilities/validation/email';
 import ValidatePassword from '../../utilities/validation/password';
 import ValidateConfirmPassword from '../../utilities/validation/confirm-password';
-import { UserRegister } from '../../services/user';
+import { UserRegister } from '../../services/auth';
 import notify from '../../components/public/notification';
 import Registration from '../../asserts/images/Registration.svg';
 

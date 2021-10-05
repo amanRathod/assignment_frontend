@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import FormInputEmail from '../../components/input/email';
 import FormInputPassword from '../../components/input/password';
 import ValidateEmail from '../../utilities/validation/email';
-import { UserLogin } from '../../services/user';
+import { UserLogin } from '../../services/auth';
 import notify from '../../components/public/notification';
 import UserSecurity from '../../asserts/images/UserSecurity.svg';
 
@@ -35,13 +35,13 @@ export default function LoginView() {
     try {
       const response = await UserLogin(state);
       notify(response);
-      console.log('response', response);
       if (response.type === 'success') {
         const user = {
           email: response.email,
           user_type: response.user_type
         };
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', response.email);
+        localStorage.setItem('user_type', response.user_type);
         localStorage.setItem('accessToken', response.token);
         if (response.bool === false) {
           history.push(ROUTES.PERSONAL_DETAILS);

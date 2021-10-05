@@ -25,7 +25,6 @@ const load = () => (
 
 const App = () => {
   const user = UserAuthListener();
-  console.log('userrr', user);
   const { theme, setTheme } = Theme();
   return (
     <UserContext.Provider value={{ user }}>

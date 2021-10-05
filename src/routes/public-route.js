@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import UserContext from '../utilities/context/user';
 
 const PublicRoute = ({ component: Component, ...rest }) => {
-  const { user } = useContext(UserContext);
+  const user = localStorage.getItem('user');
   const userType = localStorage.getItem('user_type');
   return (
     <Route

@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import notify from '../../components/public/notification';
 import ValidateEmail from '../../utilities/validation/email';
 import FormInputEmail from '../../components/input/email';
-import { UserForgotPassword } from '../../services/user';
+import { UserForgotPassword } from '../../services/auth';
 
 const ForgotPassword = () => {
   const [state, setState] = useState({
