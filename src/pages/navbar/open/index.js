@@ -1,11 +1,11 @@
 import React from 'react';
+import List from './list';
 
 const Open = () => {
   const [state, setState] = React.useState({});
   return (
     <div>
-      <h1>open</h1>
-      <p> This is open </p>
+      <List />
     </div>
   );
 };

@@ -3,7 +3,6 @@ import axios from 'axios';
 const link = 'http://localhost:5000/api/v1';
 
 const token = localStorage.getItem('accessToken');
-console.log('topken', token);
 
 const { user } = localStorage.getItem('user');
 const config = {

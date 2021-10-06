@@ -15,7 +15,7 @@ const Sidebar = ({ toggle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useContext(UserContext);
   const userType = localStorage.getItem('user_type');
-  const { state } = useContext(UserDataContext);
+  const { state, dispatch } = useContext(UserDataContext);
 
   useEffect(() => {
     document.title = 'Dashboard';
@@ -39,6 +39,10 @@ const Sidebar = ({ toggle }) => {
       console.log(err);
     }
   };
+
+  const handleNav = (name) => {
+    dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: name });
+  }
 
   return (
     <div
@@ -65,20 +69,20 @@ const Sidebar = ({ toggle }) => {
               </a>
             </li>
             <li className={`${userType === 'TA' && 'hidden'}`}>
-              <a href={ROUTES.TA} className="sidebar-nav">
-                <UsersIcon className="w-6 h-6 text-blue-seven" />
+              <a onClick={() => handleNav('ta')} aria-hidden="true" className="sidebar-nav">
+                <UsersIcon className="icon1" />
                 <span className="flex-1">Teaching Assistant</span>
               </a>
             </li>
             <li className={`${userType === 'Student' && 'hidden'}`}>
-              <a href={ROUTES.STUDENTS} className="sidebar-nav">
-              <UsersIcon className="w-6 h-6 text-blue-seven" />
+              <a onClick={() => handleNav('student')} aria-hidden="true" className="sidebar-nav">
+              <UsersIcon className="icon1" />
                 <span className="flex-1">Students</span>
               </a>
             </li>
             <li>
               <a onClick={handleLogout} aria-hidden="true" className="sidebar-nav cursor-pointer">
-               <LogoutIcon className="w-6 h-6 text-blue-seven" />
+               <LogoutIcon className="icon1" />
                 <span className="flex-1">Logout</span>
               </a>
             </li>
@@ -91,8 +95,8 @@ const Sidebar = ({ toggle }) => {
       <button className="profile-bar">
         <img src={state.avatar} alt={`${state.name} profile`} className="rounded-full w-14 h-14" />
         <div className="col xl:items-start">
-          <span className="font-bold dark:text-blue-one text-blue-nine">{state.name}</span>
-          <span className="text-sm font-bold dark-text text-blue-nine opacity-50">
+          <span className="font-bold dark-eight">{state.name}</span>
+          <span className="text-sm font-bold dark-nine opacity-50">
             View profile
           </span>
         </div>

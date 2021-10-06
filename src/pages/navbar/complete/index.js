@@ -1,11 +1,11 @@
 import React from 'react';
+import List from './list';
 
 const Complete = () => {
   const [state, setState] = React.useState({});
   return (
     <div>
-      <h1>Complete</h1>
-      <p> This is Complete </p>
+      <List />
     </div>
   );
 };

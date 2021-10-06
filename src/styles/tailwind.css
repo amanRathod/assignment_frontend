@@ -75,6 +75,9 @@
   .icon {
       @apply h-10 px-3 dark:bg-grey-six rounded-lg hover:bg-grey-fifty dark:hover:bg-grey-six focus:bg-grey-fifty dark:focus:bg-grey-seven 
     }
+  .icon1 {
+    @apply w-6 h-6 text-blue-seven
+  }
   .profile-bar {
       @apply absolute left-0 col hidden w-full space-y-4 md:flex xl:w-auto xl:flex-row xl:justify-start xl:space-y-0 xl:space-x-4 focus-ring xl:left-8 xl:-mr-8 bottom-6
   }
@@ -95,6 +98,12 @@
   }
   .box-border {
     @apply border border-blue-one rounded-lg hover
+  }
+  .status1 {
+    @apply bg-red-primary
+  }
+  .status2 {
+    @apply "px-3 mb-2 text-base text-green-five bg-green-one rounded-full border-full"
   }
   
 }  

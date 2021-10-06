@@ -4,6 +4,7 @@ import Sidebar from '../../pages/dashboard/sidebar';
 import Dashboard from '../../pages/dashboard';
 import UserDataContext from '../../utilities/context/userData';
 import { GetStudentData, GetTAData, GetAdminData } from '../../services/user';
+import Grade from '../../pages/navbar/open/grade';
 
 const DashboardView = () => {
   const [toggle, setToggle] = useState(true);
@@ -32,6 +33,15 @@ const DashboardView = () => {
       case 'students': {
         return { ...state, [action.fieldName]: action.payload };
       }
+      case 'userType': {
+        return { ...state, [action.fieldName]: action.payload };
+      }
+      case 'currentNav': {
+        return { ...state, [action.fieldName]: action.payload };
+      }
+      case 'gradeSubmittedAssignment': {
+        return { ...state, [action.fieldName]: action.payload };
+      }
       default: {
         return state;
       }
@@ -43,14 +53,17 @@ const DashboardView = () => {
     registration_no: '',
     institute: '',
     avatar: '',
+    userType: '',
+    gradeSubmittedAssignment: [],
+    currentNav: 'all',
     assignment: [],
     teaching_assistant: {},
-    submissions: {},
-    students: {}
+    submissions: [],
+    students: []
   };
 
   const [state, dispatch] = useReducer(reducer, InitialState);
-  console.log('state', state);
+  console.log(state);
 
   const fetchData = async () => {
     try {
@@ -66,7 +79,6 @@ const DashboardView = () => {
 
       // destructure response data
       const { data, ta, assignments, submissions, students } = response;
-      console.log('response', response);
 
       // store the response data to their respective state
       dispatch({ type: 'name', fieldName: 'name', payload: data.name });
@@ -85,6 +97,7 @@ const DashboardView = () => {
       });
       dispatch({ type: 'submissions', fieldName: 'submissions', payload: submissions });
       dispatch({ type: 'students', fieldName: 'students', payload: students });
+      dispatch({ type: 'userType', fieldName: 'userType', payload: data.user_type });
     } catch (error) {
       console.log(error);
     }
@@ -96,7 +109,6 @@ const DashboardView = () => {
     // const interval = setInterval(() => {
     //   fetchData();
     // }, 10000);
-
     // return () => clearInterval(interval);
   }, []);
   return (

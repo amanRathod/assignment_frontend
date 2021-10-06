@@ -36,17 +36,13 @@ export default function LoginView() {
       const response = await UserLogin(state);
       notify(response);
       if (response.type === 'success') {
-        const user = {
-          email: response.email,
-          user_type: response.user_type
-        };
         localStorage.setItem('user', response.email);
         localStorage.setItem('user_type', response.user_type);
         localStorage.setItem('accessToken', response.token);
         if (response.bool === false) {
           history.push(ROUTES.PERSONAL_DETAILS);
         } else {
-          history.push(`/${response.user_type}/dashboard`);
+          history.push(ROUTES.DASHBOARD);
         }
       }
     } catch (error) {

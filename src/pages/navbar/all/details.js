@@ -1,17 +1,32 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import * as ROUTES from '../../../constants/routes';
+import UserDataContext from '../../../utilities/context/userData';
 
-const Details = ({ data }) => {
-  const [state, setState] = React.useState({});
+const Details = ({ data, id }) => {
+  const history = useHistory();
+  const { state, dispatch } = useContext(UserDataContext);
+
+  const handleSubmit = () => {
+    dispatch({
+      type: 'gradeSubmittedAssignment',
+      fieldName: 'gradeSubmittedAssignment',
+      payload: data.submission
+    });
+    dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: 'grade' });
+  };
   return (
-    <div>
+    <div className={`${data._id === id ? 'visible' : 'hidden'} `}>
       <h1>Details</h1>
       <div className="flex-col m-4">
         <div className="flex">
-          <p>25 assigned</p>
+          <p>{state.students.length} assigned</p>
           <p className="text-gray-base">&nbsp;&nbsp;|&nbsp;&nbsp;</p>
-          <p>{data.submission.length} submitted</p>
+          <p onClick={handleSubmit} aria-hidden="true" className="cursor-pointer underline">
+            {data.submission.length} submitted
+          </p>
         </div>
         <div className="flex-col">
           <div className="flex">
@@ -19,7 +34,9 @@ const Details = ({ data }) => {
             <p>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </p>
-            <p>{data.filePath}</p>
+            <a target="_blank" href={data.filePath} className="underline" rel="noreferrer">
+              {data.filePath}
+            </a>
           </div>
           <div className="flex">
             <p>Due:</p>

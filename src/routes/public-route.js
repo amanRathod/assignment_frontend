@@ -2,16 +2,14 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import UserContext from '../utilities/context/user';
+import * as ROUTES from '../constants/routes';
 
 const PublicRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('user');
-  const userType = localStorage.getItem('user_type');
   return (
     <Route
       {...rest}
-      render={(props) =>
-        user ? <Redirect to={`/${userType}/dashboard`} /> : <Component {...props} />
-      }
+      render={(props) => (user ? <Redirect to={ROUTES.DASHBOARD} /> : <Component {...props} />)}
     />
   );
 };

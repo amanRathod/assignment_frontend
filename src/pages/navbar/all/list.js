@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext, useState } from 'react';
 import { FaFile, FaFilePdf } from 'react-icons/fa';
 import UserDataContext from '../../../utilities/context/userData';
@@ -6,9 +5,19 @@ import Details from './details';
 
 const List = () => {
   const { state } = useContext(UserDataContext);
+  const [id, setId] = useState();
+
+  const handleToggle = (idx) => {
+    if (!id) {
+      setId(idx);
+    } else {
+      setId('');
+    }
+  };
+
   return (
     <div className="px-4 py-4 mt-8 bg-white dark:bg-grey-eight rounded-lg large-x-y">
-      <h2 className="mb-4 text-xl font-bold dark-nine lg:mb-6">Assigments</h2>
+      <h2 className="mb-4 text-xl font-bold dark-nine lg:mb-6">Assignments</h2>
       <div className="overflow-x-auto">
         <div className="inline-block min-w-full overflow-hidden align-middle">
           <table className="min-w-full">
@@ -24,16 +33,26 @@ const List = () => {
               {state.assignment ? (
                 state.assignment.map((item, idx) => (
                   <>
-                    <tr className="dark-eight dark:text-blue-fifty divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap">
-                        <td className="table-x-y flex">
-                          <FaFilePdf className="w-6 h-6" />
-                          {item.title}
-                        </td>
-                        <td className="table-x-y">{item.totalMarks}&nbsp;pts</td>
-                        <td className="table-x-y">{item.dueDate}</td>
-                        <td className="table-x-y">{item.status}</td>
+                    <tr
+                      key={item._id}
+                      className="dark-eight dark:text-blue-fifty divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap"
+                      onClick={() => handleToggle(item._id)}
+                    >
+                      <td className="table-x-y flex cursor-pointer">
+                        <FaFilePdf className="w-6 h-6" />
+                        {item.title}
+                      </td>
+                      <td className="table-x-y">{item.totalMarks}&nbsp;pts</td>
+                      <td className="table-x-y">{item.dueDate}</td>
+                      <td
+                        className={`table-x-y ${
+                          item.status === 'inactive' ? 'status1' : 'status2'
+                        }`}
+                      >
+                        {item.status}
+                      </td>
                     </tr>
-                    <Details data={item}/>
+                    <Details data={item} id={id} />
                   </>
                 ))
               ) : (
