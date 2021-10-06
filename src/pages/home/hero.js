@@ -7,7 +7,7 @@ const Hero = () => (
       <div className="self-center order-1 col-span-2 mt-12 md:order-1 md:mt-0 dark-base">
         <h1 className="heading-hero">
           The best way to manage your <br />
-          <span className="text-purple-seven font-bold text-4xl dark-nine">Assignment</span>
+          <span className="text-blue-seven font-bold text-4xl dark-nine">Assignment</span>
         </h1>
         <p className="hidden lg:flex mt-4  text-gray dark-base">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt

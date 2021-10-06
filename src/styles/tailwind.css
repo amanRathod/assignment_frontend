@@ -10,11 +10,11 @@
     @apply dark:bg-darkMode-primary dark:text-white;
   }
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-purple-five focus:ring-opacity-60
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-five focus:ring-opacity-60
   }
   
   .btn {
-    @apply py-2 max-w-xs px-4 mr-4 mt-4 font-bold rounded-2xl bg-purple-five text-white tracking-tighter text-base focus:outline-none  focus:ring-2 focus:ring-offset-2 duration-500 focus:ring-purple-seven;
+    @apply py-2 max-w-xs px-4 mr-4 mt-4 font-bold rounded-2xl bg-blue-five text-white tracking-tighter text-base focus:outline-none  focus:ring-2 focus:ring-offset-2 duration-500 focus:ring-blue-seven;
   }
   .row {
     @apply flex justify-around space-x-2 ;
@@ -43,10 +43,10 @@
     @apply rounded-2xl shadow-2xl;
   }
   .dark-eight {
-    @apply text-purple-eight dark:text-purple-one
+    @apply text-blue-eight dark:text-blue-one
   }
   .dark-nine {
-    @apply text-purple-nine dark:text-purple-two
+    @apply text-blue-nine dark:text-blue-two
   }  
   .error {
     @apply text-red-primary mb-3 break-normal;
@@ -55,13 +55,13 @@
     @apply mx-auto px-4  bg-headerWhite  dark-base shadow-lg  text-center text-xl font-bold tracking-tighter;
   }
   .hamburger {
-    @apply w-6 h-6 text-gray-base hover:text-purple-five;
+    @apply w-6 h-6 text-gray-base hover:text-blue-five;
   }
   .underline-link {
-    @apply  border-b-4 cursor-pointer border-headerWhite  hover:border-purple-five dark:hover:border-purple-five dark:border-darkMode-base duration-500;
+    @apply  border-b-4 cursor-pointer border-headerWhite  hover:border-blue-five dark:hover:border-blue-five dark:border-darkMode-base duration-500;
   }
   .input-control {
-    @apply w-80 bg-purple-fifty border-gray-base border-opacity-50 border-2 rounded-2xl p-2 mb-2  focus-ring
+    @apply w-80 bg-blue-fifty border-gray-base border-opacity-50 border-2 rounded-2xl p-2 mb-2  focus-ring
   }
   .text-color {
     @apply dark-nine text-lg font-semibold ;
@@ -82,19 +82,19 @@
     @apply xl:w-64 2xl:w-80 lg:px-6 xl:px-8 lg:py-6 lg:flex
   }
   .sidebar-nav {
-    @apply flex items-end px-4 py-3 space-x-2 font-bold dark:bg-darkMode-base dark:text-purple-two text-purple-nine bg-white hover:bg-purple-one transition-colors duration-100 rounded-lg dark:hover:bg-darkMode-primary text-opacity-70 hover:text-opacity-100
+    @apply flex items-end px-4 py-3 space-x-2 font-bold dark:bg-darkMode-base dark:text-blue-two text-blue-nine bg-white hover:bg-blue-one transition-colors duration-100 rounded-lg dark:hover:bg-darkMode-primary text-opacity-70 hover:text-opacity-100
   }
   .input-control2 {
-    @apply dark-nine bg-white dark:bg-grey-six placeholder-purple-nine dark:placeholder-purple-two rounded-lg pl-9 placeholder-opacity-70 focus-ring;
+    @apply dark-nine bg-white dark:bg-grey-six placeholder-blue-nine dark:placeholder-blue-two rounded-lg pl-9 placeholder-opacity-70 focus-ring;
   }
   .bg-current-Navbar {
-    @apply bg-purple-fifty dark:bg-darkMode-primary
+    @apply bg-blue-fifty dark:bg-darkMode-primary
   }
   .hover {
-    @apply hover:bg-purple-fifty dark:hover:bg-darkMode-primary
+    @apply hover:bg-blue-fifty dark:hover:bg-darkMode-primary
   }
   .box-border {
-    @apply border border-purple-one rounded-lg hover
+    @apply border border-blue-one rounded-lg hover
   }
   
 }  

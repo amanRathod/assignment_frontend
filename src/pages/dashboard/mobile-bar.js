@@ -12,7 +12,7 @@ const MobileBar = ({ setToggle, toggle }) => {
   };
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 text-purple-one bg-purple-nine lg:hidden">
+    <div className="flex items-center justify-between px-4 py-2 text-blue-one bg-blue-nine lg:hidden">
       <button id="menuToggle" onClick={handleTOggle} className="focus-ring">
         <svg
           className="w-6 h-6"
@@ -48,7 +48,7 @@ const MobileBar = ({ setToggle, toggle }) => {
         </g>
       </svg>
       <button type="submit" className="box1 space-x-2 xl:justify-start focus-ring">
-        <span className="text-xs font-bold text-purple-one">{state.name}</span>
+        <span className="text-xs font-bold text-blue-one">{state.name}</span>
         <img src={state.avatar} alt="IMG" className="w-10 h-10 rounded-full" />
       </button>
     </div>

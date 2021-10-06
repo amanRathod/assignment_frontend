@@ -12,7 +12,7 @@ const List = () => {
       <div className="overflow-x-auto">
         <div className="inline-block min-w-full overflow-hidden align-middle">
           <table className="min-w-full">
-            <thead className="text-left bg-purple-fifty dark:bg-grey-six">
+            <thead className="text-left bg-blue-fifty dark:bg-grey-six">
               <tr>
                 <th className="table-x-y">Assignment</th>
                 <th className="table-x-y">Grade</th>
@@ -24,7 +24,7 @@ const List = () => {
               {state.assignment ? (
                 state.assignment.map((item, idx) => (
                   <>
-                    <tr className="dark-eight dark:text-purple-fifty divide-y divide-purple-one dark:divide-grey-six text-opacity-80 whitespace-nowrap">
+                    <tr className="dark-eight dark:text-blue-fifty divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap">
                         <td className="table-x-y flex">
                           <FaFilePdf className="w-6 h-6" />
                           {item.title}

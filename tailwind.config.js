@@ -23,6 +23,8 @@ module.exports = {
         one: '#bbdefb',
         two: '#90caf9',
         eight: '#1565c0',
+        five: '#2196f3',
+        seven: '#1976d2',
         nine: '#0d47a1',
         light: '#207DFF',
         medium: '#005c98'

@@ -12,7 +12,7 @@ const Topbar = () => {
       <div className="flex justify-between flex-1 space-x-4 md:justify-end">
         <div className="relative w-full md:max-w-xs">
           <svg
-            className="absolute w-5 h-5 text-purple-nine top-3 left-3 opacity-70"
+            className="absolute w-5 h-5 text-blue-nine top-3 left-3 opacity-70"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
