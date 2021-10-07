@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { FaFile, FaFilePdf } from 'react-icons/fa';
 import UserDataContext from '../../../utilities/context/userData';
 import Details from '../all/details';
+import Submit from './submit-assignment';
 
 const List = () => {
   const { state } = useContext(UserDataContext);
@@ -35,7 +36,7 @@ const List = () => {
                     <>
                       <tr
                         key={item._id}
-                        className="dark-eight dark:text-blue-fifty divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap"
+                        className="dark-nine divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap"
                         onClick={() => handleToggle(item._id)}
                       >
                         <td className="table-x-y flex cursor-pointer">
@@ -53,6 +54,7 @@ const List = () => {
                         </td>
                       </tr>
                       <Details data={item} id={id} />
+                      <Submit data={item} id={id} />
                     </>
                   ) : null
                 )

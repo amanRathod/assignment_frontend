@@ -4,7 +4,6 @@ import { FilterIcon } from '@heroicons/react/solid';
 import UserDataContext from '../../utilities/context/userData';
 
 const Action = () => {
-  const userType = localStorage.getItem('user_type');
   const { state, dispatch } = useContext(UserDataContext);
 
   const updateCurrentNav = (name) => {
@@ -58,7 +57,7 @@ const Action = () => {
           aria-hidden="true"
           className={`inline-flex col w-32 px-3 py-3 box-border ${
             state.currentNav === 'missing' && 'bg-current-Navbar'
-          } ${userType !== 'Student' && 'hidden'} `}
+          } ${state.userType !== 'Student' && 'hidden'} `}
         >
           <span className="dark-nine opacity-70">Missing</span>
         </div>

@@ -100,10 +100,10 @@
     @apply border border-blue-one rounded-lg hover
   }
   .status1 {
-    @apply bg-red-primary
+    @apply px-3 mb-2 text-base text-red-five bg-red-one rounded-full
   }
   .status2 {
-    @apply "px-3 mb-2 text-base text-green-five bg-green-one rounded-full border-full"
+    @apply px-3 mb-2 text-base text-green-five bg-green-one rounded-full
   }
   
 }  

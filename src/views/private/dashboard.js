@@ -57,7 +57,7 @@ const DashboardView = () => {
     gradeSubmittedAssignment: [],
     currentNav: 'all',
     assignment: [],
-    teaching_assistant: {},
+    teaching_assistant: [],
     submissions: [],
     students: []
   };

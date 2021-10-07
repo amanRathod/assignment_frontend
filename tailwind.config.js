@@ -79,7 +79,9 @@ module.exports = {
       red: {
         primary: '#ed4956',
         secondary: '#db3236',
-        light: '#FECACA'
+        light: '#FECACA',
+        one: '#ffcdd2',
+        five: '#f44336'
       },
       purple: {
         fifty: '#f3e5f5',

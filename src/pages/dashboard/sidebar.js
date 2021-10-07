@@ -13,8 +13,6 @@ import notify from '../../components/public/notification';
 const Sidebar = ({ toggle }) => {
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useContext(UserContext);
-  const userType = localStorage.getItem('user_type');
   const { state, dispatch } = useContext(UserDataContext);
 
   useEffect(() => {
@@ -68,13 +66,13 @@ const Sidebar = ({ toggle }) => {
                 <span className="flex-1">Dashboard</span>
               </a>
             </li>
-            <li className={`${userType === 'TA' && 'hidden'}`}>
+            <li className={`${state.userType === 'TA' && 'hidden'}`}>
               <a onClick={() => handleNav('ta')} aria-hidden="true" className="sidebar-nav">
                 <UsersIcon className="icon1" />
                 <span className="flex-1">Teaching Assistant</span>
               </a>
             </li>
-            <li className={`${userType === 'Student' && 'hidden'}`}>
+            <li className={`${state.userType === 'Student' && 'hidden'}`}>
               <a onClick={() => handleNav('student')} aria-hidden="true" className="sidebar-nav">
               <UsersIcon className="icon1" />
                 <span className="flex-1">Students</span>
