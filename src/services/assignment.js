@@ -54,3 +54,12 @@ export async function createAssignment(formData) {
     console.log(err);
   }
 }
+
+export async function evaluate(data) {
+  try {
+    const response = await axios.put(`${link}/submission/evaluate`, data, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  };
+}
