@@ -37,3 +37,20 @@ export async function GetAssignmentApi(data) {
     console.log(err);
   }
 }
+
+export async function createAssignment(formData) {
+  try {
+
+    const configs = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      }
+    };
+    const response = await axios.post(`${link}/assignment/create`, formData, configs);
+    console.log(response);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+}

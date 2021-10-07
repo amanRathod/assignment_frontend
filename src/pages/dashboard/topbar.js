@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import UserDataContext from '../../utilities/context/userData';
 
 const Topbar = () => {
   const { state } = useContext(UserDataContext);
   return (
     <div className="flex justify-between w-full mx-auto max-w-screen-2xl">
+      <ToastContainer />
       <div className="hidden md:block">
         <h1 className="mb-1 text-2xl font-bold dark-eight">Assignment</h1>
         <p className="text-lg dark-nine lg:block">Dashboard overview</p>
