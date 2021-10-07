@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { FilterIcon } from '@heroicons/react/solid';
 import UserDataContext from '../../utilities/context/userData';
 
@@ -35,7 +34,7 @@ const Action = () => {
           aria-hidden="true"
           className={`inline-flex col w-32 px-3 py-3 box-border ${
             state.currentNav === 'open' && 'bg-current-Navbar focus-ring'
-          }`}
+          } ${state.userType === 'Admin' && 'hidden'}`}
         >
           <span className="dark-nine opacity-70">Open</span>
         </div>
@@ -46,7 +45,7 @@ const Action = () => {
           aria-hidden="true"
           className={`inline-flex col w-32 px-3 py-3 box-border ${
             state.currentNav === 'complete' && 'bg-current-Navbar'
-          }`}
+          } ${state.userType === 'Admin' && 'hidden'}`}
         >
           <span className="dark-nine opacity-70">Complete</span>
         </div>
@@ -60,6 +59,28 @@ const Action = () => {
           } ${state.userType !== 'Student' && 'hidden'} `}
         >
           <span className="dark-nine opacity-70">Missing</span>
+        </div>
+        <div
+          onClick={() => {
+            updateCurrentNav('create');
+          }}
+          aria-hidden="true"
+          className={`inline-flex col w-32 px-3 py-3 box-border ${
+            state.currentNav === 'create' && 'bg-current-Navbar'
+          } ${state.userType !== 'Admin' && 'hidden'} `}
+        >
+          <span className="dark-nine opacity-70">Create</span>
+        </div>
+        <div
+          onClick={() => {
+            updateCurrentNav('assign');
+          }}
+          aria-hidden="true"
+          className={`inline-flex col w-32 px-3 py-3 box-border ${
+            state.currentNav === 'assign' && 'bg-current-Navbar'
+          } ${state.userType !== 'Admin' && 'hidden'} `}
+        >
+          <span className="dark-nine opacity-70">Assign</span>
         </div>
       </nav>
     </div>

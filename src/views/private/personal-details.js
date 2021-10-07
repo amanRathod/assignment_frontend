@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as ROUTES from '../../constants/routes';
 import FormInputName from '../../components/input/name';
 import Date from '../../components/input/date';
 import FormInputNumber from '../../components/input/number';
@@ -38,7 +39,7 @@ const PersonalDetails = () => {
       const response = await UserUpdate(state);
       notify(response);
       if (response.type === 'success') {
-        history.push(`/${response.data}/dashboard`);
+        history.push(ROUTES.DASHBOARD);
       }
     } catch (error) {
       console.log(error);

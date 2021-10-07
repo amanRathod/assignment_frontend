@@ -4,7 +4,6 @@ import Sidebar from '../../pages/dashboard/sidebar';
 import Dashboard from '../../pages/dashboard';
 import UserDataContext from '../../utilities/context/userData';
 import { GetStudentData, GetTAData, GetAdminData } from '../../services/user';
-import Grade from '../../pages/navbar/open/grade';
 
 const DashboardView = () => {
   const [toggle, setToggle] = useState(true);
@@ -106,10 +105,11 @@ const DashboardView = () => {
   useEffect(() => {
     document.title = 'Dashboard';
     fetchData();
-    // const interval = setInterval(() => {
-    //   fetchData();
-    // }, 10000);
-    // return () => clearInterval(interval);
+    // update data for every 10 second
+    const interval = setInterval(() => {
+      fetchData();
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
   return (
     <div className="flex flex-col min-h-screen dark:bg-darkMode-primary text-base subpixel-antialiased font-semibold dark-eight lg:flex-row">

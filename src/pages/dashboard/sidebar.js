@@ -1,10 +1,8 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { LogoutIcon, UsersIcon } from '@heroicons/react/solid';
-import UserContext from '../../utilities/context/user';
 import * as ROUTES from '../../constants/routes';
 import DarkMode from '../../components/public/dark_mode';
 import UserDataContext from '../../utilities/context/userData';
@@ -15,6 +13,7 @@ const Sidebar = ({ toggle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { state, dispatch } = useContext(UserDataContext);
 
+  // hide the sidebar when hamburger(3-dot) is closed
   useEffect(() => {
     document.title = 'Dashboard';
     if (toggle) {
@@ -24,6 +23,7 @@ const Sidebar = ({ toggle }) => {
     }
   }, [toggle]);
 
+  // during logout just delete the access-token from localstorage
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
@@ -40,7 +40,7 @@ const Sidebar = ({ toggle }) => {
 
   const handleNav = (name) => {
     dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: name });
-  }
+  };
 
   return (
     <div
@@ -74,13 +74,13 @@ const Sidebar = ({ toggle }) => {
             </li>
             <li className={`${state.userType === 'Student' && 'hidden'}`}>
               <a onClick={() => handleNav('student')} aria-hidden="true" className="sidebar-nav">
-              <UsersIcon className="icon1" />
+                <UsersIcon className="icon1" />
                 <span className="flex-1">Students</span>
               </a>
             </li>
             <li>
               <a onClick={handleLogout} aria-hidden="true" className="sidebar-nav cursor-pointer">
-               <LogoutIcon className="icon1" />
+                <LogoutIcon className="icon1" />
                 <span className="flex-1">Logout</span>
               </a>
             </li>
@@ -94,9 +94,7 @@ const Sidebar = ({ toggle }) => {
         <img src={state.avatar} alt={`${state.name} profile`} className="rounded-full w-14 h-14" />
         <div className="col xl:items-start">
           <span className="font-bold dark-eight">{state.name}</span>
-          <span className="text-sm font-bold dark-nine opacity-50">
-            View profile
-          </span>
+          <span className="text-sm font-bold dark-nine opacity-50">View profile</span>
         </div>
       </button>
     </div>
