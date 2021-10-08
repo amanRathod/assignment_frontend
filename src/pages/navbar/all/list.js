@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { FaFile, FaFilePdf } from 'react-icons/fa';
 import UserDataContext from '../../../utilities/context/userData';
 import Details from './details';
+import Option from './option';
 
 const List = () => {
   const { state } = useContext(UserDataContext);
@@ -53,6 +54,7 @@ const List = () => {
                       </td>
                     </tr>
                     <Details data={item} id={id} />
+                    <Option data={item} id={id} />
                   </>
                 ))
               ) : (

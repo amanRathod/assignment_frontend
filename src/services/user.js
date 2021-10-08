@@ -64,3 +64,12 @@ export async function removeStudentFromTA(data) {
     console.log(err);
   }
 }
+
+export async function assignTA(data) {
+  try {
+    const response = await axios.post(`${link}/assignment/assign-to-TA`, data, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+}
