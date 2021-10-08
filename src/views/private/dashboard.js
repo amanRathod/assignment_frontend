@@ -106,10 +106,10 @@ const DashboardView = () => {
     document.title = 'Dashboard';
     fetchData();
     // update data for every 10 second
-    const interval = setInterval(() => {
-      fetchData();
-    }, 10000);
-    return () => clearInterval(interval);
+    // const interval = setInterval(() => {
+    //   fetchData();
+    // }, 10000);
+    // return () => clearInterval(interval);
   }, []);
   return (
     <div className="flex flex-col min-h-screen dark:bg-darkMode-primary text-base subpixel-antialiased font-semibold dark-eight lg:flex-row">

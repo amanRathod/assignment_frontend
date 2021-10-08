@@ -54,7 +54,7 @@ const List = () => {
                       </td>
                     </tr>
                     <Details data={item} id={id} />
-                    <Option data={item} id={id} />
+                    <Option data={item} id={id} setId={setId} />
                   </>
                 ))
               ) : (

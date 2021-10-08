@@ -5,10 +5,9 @@ import notify from '../../../components/public/notification';
 import { assignTA } from '../../../services/user';
 import UserDataContext from '../../../utilities/context/userData';
 
-const AssignAssignment = ({ assignment, id }) => {
-  const { state } = useContext(UserDataContext);
+const AssignAssignment = ({ assignment, id, setId }) => {
+  const { state, dispatch } = useContext(UserDataContext);
   const [selectedTA, setSelectedTA] = useState([]);
-  console.log('selected Ta', selectedTA);
 
   // check and uncheck the checkbox according to admin needs
   const handleCheckbox = (id) => {
@@ -31,6 +30,9 @@ const AssignAssignment = ({ assignment, id }) => {
       };
       const response = await assignTA(data);
       notify(response);
+      if (response.type === 'success') {
+        setId('');
+      }
     } catch (err) {
       console.log(err);
     }

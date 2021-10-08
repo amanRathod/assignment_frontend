@@ -5,7 +5,7 @@ import EditAssignment from './edit-assignment';
 import TA from '../../ta';
 import AssignAssignment from './assign-assignment';
 
-const Option = ({ data, id }) => {
+const Option = ({ data, id, setId }) => {
   const { state } = useContext(UserDataContext);
   const [currentOption, setCurrentOption] = useState('');
 
@@ -34,8 +34,8 @@ const Option = ({ data, id }) => {
       >
         Edit
       </button>
-      {currentOption === 'assign' && <AssignAssignment assignment={data} id={id} />}
-      {currentOption === 'edit' && <EditAssignment data={data} />}
+      {currentOption === 'assign' && <AssignAssignment assignment={data} id={id} setId={setId} />}
+      {currentOption === 'edit' && <EditAssignment assignment={data} />}
     </div>
   );
 };
