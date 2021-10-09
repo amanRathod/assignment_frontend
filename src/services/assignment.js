@@ -79,3 +79,12 @@ export async function deleteAssignment(data) {
     console.log(err);
   }
 }
+
+export async function UpdateSubmittedAssignment(data) {
+  try {
+    const response = await axios.put(`${link}/submission/update`, data, configs);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+}

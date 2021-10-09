@@ -38,7 +38,7 @@ const DashboardView = () => {
       case 'currentNav': {
         return { ...state, [action.fieldName]: action.payload };
       }
-      case 'gradeSubmittedAssignment': {
+      case 'submittedAssignment': {
         return { ...state, [action.fieldName]: action.payload };
       }
       default: {
@@ -53,7 +53,7 @@ const DashboardView = () => {
     institute: '',
     avatar: '',
     userType: '',
-    gradeSubmittedAssignment: [],
+    submittedAssignment: [],
     currentNav: 'all',
     assignment: [],
     teaching_assistant: [],
@@ -78,7 +78,8 @@ const DashboardView = () => {
 
       // destructure response data
       const { data, ta, assignments, submissions, students } = response;
-
+      console.log('sub', submissions);
+      console.log('as', assignments);
       // store the response data to their respective state
       dispatch({ type: 'name', fieldName: 'name', payload: data.name });
       dispatch({
@@ -94,7 +95,11 @@ const DashboardView = () => {
         fieldName: 'teaching_assistant',
         payload: ta
       });
-      dispatch({ type: 'submissions', fieldName: 'submissions', payload: submissions });
+      dispatch({
+        type: 'submittedAssignment',
+        fieldName: 'submittedAssignment',
+        payload: submissions
+      });
       dispatch({ type: 'students', fieldName: 'students', payload: students });
       dispatch({ type: 'userType', fieldName: 'userType', payload: data.user_type });
     } catch (error) {

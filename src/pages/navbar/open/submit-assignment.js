@@ -1,27 +1,29 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/prop-types */
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
 import UserDataContext from '../../../utilities/context/userData';
 import notify from '../../../components/public/notification';
-import { SubmitAssignmentApi } from '../../../services/assignment';
+import { SubmitAssignmentApi, UpdateSubmittedAssignment } from '../../../services/assignment';
 
 const SubmitAssignment = ({ data, id, setId }) => {
-  const { state, dispatch } = useContext(UserDataContext);
+  const { state } = useContext(UserDataContext);
   const [temperoryLink, setTemperorylink] = useState('');
-  const [assignment, setAssignment] = useState('');
+  const [assignmentObject, setAssignmentObject] = useState('');
+  const [submittedAssignment, setSubmittedAssignment] = useState();
   console.log(state);
-  console.log('data', assignment);
+  console.log('ssss', submittedAssignment);
 
   const handleFileUpload = (e) => {
     const linkObject = e.target.files[0];
     const temperoryLink = URL.createObjectURL(linkObject);
     setTemperorylink(temperoryLink);
-    setAssignment(linkObject);
+    setAssignmentObject(linkObject);
   };
 
   const handleSubmit = async (e) => {
@@ -29,11 +31,11 @@ const SubmitAssignment = ({ data, id, setId }) => {
     try {
       // forData to send file to backened server and get the response back from server and then update the state of the component with the response data
       const formData = new FormData();
-      formData.append('file', assignment);
+      formData.append('file', assignmentObject);
       formData.append('ta_id', data.assigned_TA);
       formData.append('assignmentId', id);
 
-      if (assignment === '') {
+      if (assignmentObject === '') {
         notify({
           type: 'warning',
           message: 'Please select a file'
@@ -49,6 +51,41 @@ const SubmitAssignment = ({ data, id, setId }) => {
       console.log(err);
     }
   };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('file', assignmentObject);
+      formData.append('ta_id', data.assigned_TA);
+      formData.append('assignmentId', id);
+      formData.append('submission_id', submittedAssignment._id);
+
+      if (assignmentObject === '') {
+        notify({
+          type: 'warning',
+          message: 'Please select a file to Update assignment'
+        });
+      } else {
+        const response = await UpdateSubmittedAssignment(formData);
+        notify(response);
+        if (response.type === 'success') {
+          setId('');
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const assignment = state.submittedAssignment.map((assignment) => {
+      if (assignment.assignmentId === id) {
+        return assignment;
+      }
+    });
+    setSubmittedAssignment(assignment[0]);
+  }, [id]);
 
   return (
     <div className={`${data._id === id && state.userType === 'Student' ? 'visible' : 'hidden'} `}>
@@ -75,7 +112,14 @@ const SubmitAssignment = ({ data, id, setId }) => {
         <div className="flex flex-col">
           <p>submit assignment:</p>
           <div className="col">
-            <object data={temperoryLink} type="application/pdf" width="100%" height="100%" />
+            <object data={temperoryLink} type="application/pdf" width="100%" height="100%">
+              <a
+                href={submittedAssignment ? submittedAssignment.filePath : null}
+                className={`text-xl underline ${submittedAssignment ? 'visible' : 'hidden'}`}
+              >
+                Submitted Assignment PDF!
+              </a>
+            </object>
             <div className="flex">
               <label className="btn">
                 <input
@@ -87,8 +131,19 @@ const SubmitAssignment = ({ data, id, setId }) => {
                 />{' '}
                 Upload file
               </label>
-              <button type="submit" className="btn bg-red-five" onClick={handleSubmit}>
+              <button
+                type="submit"
+                className={`btn bg-red-five ${submittedAssignment ? 'hidden' : 'visible'}`}
+                onClick={handleSubmit}
+              >
                 Submit
+              </button>
+              <button
+                type="submit"
+                className={`btn bg-red-five ${submittedAssignment ? 'visible' : 'hidden'}`}
+                onClick={handleUpdate}
+              >
+                Update
               </button>
             </div>
           </div>
