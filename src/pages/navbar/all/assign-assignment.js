@@ -6,7 +6,7 @@ import { assignTA } from '../../../services/user';
 import UserDataContext from '../../../utilities/context/userData';
 
 const AssignAssignment = ({ assignment, id, setId }) => {
-  const { state, dispatch } = useContext(UserDataContext);
+  const { state } = useContext(UserDataContext);
   const [selectedTA, setSelectedTA] = useState([]);
 
   // check and uncheck the checkbox according to admin needs
@@ -23,7 +23,13 @@ const AssignAssignment = ({ assignment, id, setId }) => {
 
   const handleAdd = async () => {
     try {
-      console.log('datatat', selectedTA);
+      if (selectedTA.length !== 1) {
+        notify({
+          type: 'warning',
+          message: 'Please select one TA'
+        });
+        return;
+      }
       const data = {
         ta_id: selectedTA,
         assignmentId: id

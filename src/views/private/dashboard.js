@@ -41,6 +41,9 @@ const DashboardView = () => {
       case 'submittedAssignment': {
         return { ...state, [action.fieldName]: action.payload };
       }
+      case 'gradeSubmittedAssignment': {
+        return { ...state, [action.fieldName]: action.payload };
+      }
       default: {
         return state;
       }
@@ -58,7 +61,8 @@ const DashboardView = () => {
     assignment: [],
     teaching_assistant: [],
     submissions: [],
-    students: []
+    students: [],
+    gradeSubmittedAssignment: []
   };
 
   const [state, dispatch] = useReducer(reducer, InitialState);
@@ -78,8 +82,6 @@ const DashboardView = () => {
 
       // destructure response data
       const { data, ta, assignments, submissions, students } = response;
-      console.log('sub', submissions);
-      console.log('as', assignments);
       // store the response data to their respective state
       dispatch({ type: 'name', fieldName: 'name', payload: data.name });
       dispatch({
@@ -111,10 +113,10 @@ const DashboardView = () => {
     document.title = 'Dashboard';
     fetchData();
     // update data for every 10 second
-    // const interval = setInterval(() => {
-    //   fetchData();
-    // }, 10000);
-    // return () => clearInterval(interval);
+    const interval = setInterval(() => {
+      fetchData();
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
   return (
     <div className="flex flex-col min-h-screen dark:bg-darkMode-primary text-base subpixel-antialiased font-semibold dark-eight lg:flex-row">

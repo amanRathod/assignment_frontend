@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
 import React, { useContext } from 'react';
 import UserDataContext from '../../utilities/context/userData';
 
@@ -13,7 +12,7 @@ const MobileBar = ({ setToggle, toggle }) => {
 
   return (
     <div className="flex items-center justify-between px-4 py-2 text-blue-one bg-blue-nine lg:hidden">
-      <button id="menuToggle" onClick={handleTOggle} className="focus-ring">
+      <button type="submit" id="menuToggle" onClick={handleTOggle} className="focus-ring">
         <svg
           className="w-6 h-6"
           fill="currentColor"

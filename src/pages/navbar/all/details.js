@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import UserDataContext from '../../../utilities/context/userData';
 
@@ -51,12 +50,7 @@ const Details = ({ data, id }) => {
           <div className="flex">
             <p className="dark-nine">points:</p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            <p>{data.totalMarks}</p>
-          </div>
-          <div className="flex">
-            <p className="dark-nine">Graded:</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            <p>{data.submission.length} students</p>
+            <p>{data.totalMarks} pts</p>
           </div>
         </div>
       </div>
@@ -65,3 +59,9 @@ const Details = ({ data, id }) => {
 };
 
 export default Details;
+
+// propType validation
+Details.propTypes = {
+  data: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
+};

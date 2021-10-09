@@ -32,7 +32,7 @@ const List = () => {
             <tbody>
               {state.assignment ? (
                 state.assignment.map((item) =>
-                  item.status === 'completed' ? (
+                  item.status === 'missing' ? (
                     <>
                       <tr
                         key={item._id}

@@ -2,18 +2,37 @@
 import React, { useContext, useEffect, useState } from 'react';
 import UserDataContext from '../../../utilities/context/userData';
 import EditAssignment from './edit-assignment';
-import TA from '../../ta';
 import AssignAssignment from './assign-assignment';
+import notify from '../../../components/public/notification';
 
 const Option = ({ data, id, setId }) => {
-  const { state } = useContext(UserDataContext);
+  const { state, dispatch } = useContext(UserDataContext);
   const [currentOption, setCurrentOption] = useState('');
 
   useEffect(() => {
     if (id === '') {
+      console.log('not found');
       setCurrentOption('');
+    } else if (data._id === id) {
+      console.log('found');
+      dispatch({
+        type: 'gradeSubmittedAssignment',
+        fieldName: 'gradeSubmittedAssignment',
+        payload: data.submission
+      });
     }
   }, [id]);
+
+  const handleOption = (value) => {
+    if (data.assigned_TA[0]) {
+      notify({
+        type: 'warning',
+        message: 'TA is already assigned to this assignment'
+      });
+    } else {
+      setCurrentOption(value);
+    }
+  };
 
   return (
     <div className={data._id === id && state.userType === 'Admin' ? 'visible' : 'hidden'}>
@@ -22,17 +41,25 @@ const Option = ({ data, id, setId }) => {
         className="btn"
         type="submit"
         aria-hidden="true"
-        onClick={() => setCurrentOption('assign')}
+        onClick={() => handleOption('assign')}
       >
         Assign TA
       </button>
       <button
-        className="btn"
+        className="btn bg-green-five"
         type="submit"
         aria-hidden="true"
         onClick={() => setCurrentOption('edit')}
       >
         Edit
+      </button>
+      <button
+        className="btn bg-red-five"
+        type="submit"
+        aria-hidden="true"
+        onClick={() => dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: 'grade' })}
+      >
+        View reports
       </button>
       {currentOption === 'assign' && <AssignAssignment assignment={data} id={id} setId={setId} />}
       {currentOption === 'edit' && <EditAssignment assignment={data} />}

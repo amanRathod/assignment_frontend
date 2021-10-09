@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { FaFile, FaFilePdf } from 'react-icons/fa';
+import { FaFilePdf } from 'react-icons/fa';
 import notify from '../../../components/public/notification';
 import UserDataContext from '../../../utilities/context/userData';
 import { evaluate } from '../../../services/assignment';
@@ -25,7 +25,7 @@ const Grade = () => {
 
   return (
     <div className="px-4 py-4 mt-8 bg-white dark:bg-grey-eight rounded-lg large-x-y">
-      <h2 className="mb-4 text-xl font-bold dark-nine lg:mb-6">Assignments</h2>
+      <h2 className="mb-4 text-xl font-bold dark-nine lg:mb-6">Grade</h2>
       <div className="overflow-x-auto">
         <div className="inline-block min-w-full overflow-hidden align-middle">
           <table className="min-w-full">
@@ -37,7 +37,7 @@ const Grade = () => {
             </thead>
             <tbody>
               {state.gradeSubmittedAssignment ? (
-                state.gradeSubmittedAssignment.map((item, idx) => (
+                state.gradeSubmittedAssignment.map((item) => (
                   <>
                     <tr
                       key={item._id}
@@ -58,10 +58,12 @@ const Grade = () => {
                       <td className="table-x-y">
                         <input
                           className="h-5 w-10 border-2"
+                          disabled={item.grade}
+                          value={item.grade}
                           onChange={(e) => setGrade(e.target.value)}
                         />
                         <button
-                          className="btn ml-4"
+                          className={`btn ml-4 ${item.grade ? 'hidden' : 'visible'}`}
                           type="submit"
                           onClick={() => handleSubmit(item._id)}
                         >

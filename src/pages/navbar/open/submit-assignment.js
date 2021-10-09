@@ -1,9 +1,8 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable react/prop-types */
 
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
@@ -16,9 +15,12 @@ const SubmitAssignment = ({ data, id, setId }) => {
   const [temperoryLink, setTemperorylink] = useState('');
   const [assignmentObject, setAssignmentObject] = useState('');
   const [submittedAssignment, setSubmittedAssignment] = useState();
-  console.log(state);
-  console.log('ssss', submittedAssignment);
 
+  // to check if student assignment is accepted or not
+  const assignmentAccepted =
+    submittedAssignment && submittedAssignment.submission_status === 'accepted';
+
+  // upload assignment
   const handleFileUpload = (e) => {
     const linkObject = e.target.files[0];
     const temperoryLink = URL.createObjectURL(linkObject);
@@ -32,7 +34,6 @@ const SubmitAssignment = ({ data, id, setId }) => {
       // forData to send file to backened server and get the response back from server and then update the state of the component with the response data
       const formData = new FormData();
       formData.append('file', assignmentObject);
-      formData.append('ta_id', data.assigned_TA);
       formData.append('assignmentId', id);
 
       if (assignmentObject === '') {
@@ -57,8 +58,6 @@ const SubmitAssignment = ({ data, id, setId }) => {
     try {
       const formData = new FormData();
       formData.append('file', assignmentObject);
-      formData.append('ta_id', data.assigned_TA);
-      formData.append('assignmentId', id);
       formData.append('submission_id', submittedAssignment._id);
 
       if (assignmentObject === '') {
@@ -79,12 +78,15 @@ const SubmitAssignment = ({ data, id, setId }) => {
   };
 
   useEffect(() => {
-    const assignment = state.submittedAssignment.map((assignment) => {
-      if (assignment.assignmentId === id) {
-        return assignment;
-      }
-    });
-    setSubmittedAssignment(assignment[0]);
+    // get the submitted assignment of the student for this particular assignment
+    if (state.submittedAssignment) {
+      const assignment = state.submittedAssignment.map((assignment) => {
+        if (assignment.assignmentId === id) {
+          return assignment;
+        }
+      });
+      setSubmittedAssignment(assignment[0]);
+    }
   }, [id]);
 
   return (
@@ -92,6 +94,10 @@ const SubmitAssignment = ({ data, id, setId }) => {
       <ToastContainer />
       <h1>Details</h1>
       <div className="flex-col m-4">
+        <h1 className={assignmentAccepted ? 'visible' : 'hiden'}>
+          Your assignment is accepted and graded with{' '}
+          {submittedAssignment && submittedAssignment.grade} marks
+        </h1>
         <div className="flex">
           <p className="dark-nine">description:</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -121,10 +127,11 @@ const SubmitAssignment = ({ data, id, setId }) => {
               </a>
             </object>
             <div className="flex">
-              <label className="btn">
+              <label className={`btn ${assignmentAccepted && 'opacity-70 cursor-not-allowed'}`}>
                 <input
                   type="file"
                   name="file"
+                  disabled={assignmentAccepted}
                   style={{ display: 'none' }}
                   onChange={handleFileUpload}
                   required
@@ -140,7 +147,10 @@ const SubmitAssignment = ({ data, id, setId }) => {
               </button>
               <button
                 type="submit"
-                className={`btn bg-red-five ${submittedAssignment ? 'visible' : 'hidden'}`}
+                disabled={assignmentAccepted}
+                className={`btn bg-red-five ${submittedAssignment ? 'visible' : 'hidden'} ${
+                  assignmentAccepted && 'opacity-70 cursor-not-allowed'
+                }`}
                 onClick={handleUpdate}
               >
                 Update
@@ -154,3 +164,10 @@ const SubmitAssignment = ({ data, id, setId }) => {
 };
 
 export default SubmitAssignment;
+
+// props validation
+SubmitAssignment.propTypes = {
+  data: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  setId: PropTypes.func.isRequired
+};

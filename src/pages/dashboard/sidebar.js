@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { LogoutIcon, UsersIcon } from '@heroicons/react/solid';
 import * as ROUTES from '../../constants/routes';
 import DarkMode from '../../components/public/dark_mode';
@@ -90,7 +89,7 @@ const Sidebar = ({ toggle }) => {
           </ul>
         </nav>
       </div>
-      <button className="profile-bar">
+      <button type="submit" className="profile-bar">
         <img src={state.avatar} alt={`${state.name} profile`} className="rounded-full w-14 h-14" />
         <div className="col xl:items-start">
           <span className="font-bold dark-eight">{state.name}</span>
@@ -102,3 +101,7 @@ const Sidebar = ({ toggle }) => {
 };
 
 export default Sidebar;
+// proptype validation
+Sidebar.propTypes = {
+  toggle: PropTypes.bool.isRequired
+};

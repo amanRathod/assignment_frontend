@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import UserContext from '../utilities/context/user';
 import * as ROUTES from '../constants/routes';
 
 const PublicRoute = ({ component: Component, ...rest }) => {

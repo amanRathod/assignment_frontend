@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import FormInputName from '../../../components/input/name';
 import Date from '../../../components/input/date';
@@ -12,7 +11,6 @@ import UserDataContext from '../../../utilities/context/userData';
 
 const Form = ({ assignment }) => {
   const { dispatch } = useContext(UserDataContext);
-  console.log('edit', assignment);
   const [state, setState] = useState({
     title: assignment ? assignment.title : '',
     description: assignment ? assignment.description : '',
@@ -22,8 +20,6 @@ const Form = ({ assignment }) => {
     temperoryLink: '',
     assignment: ''
   });
-
-  console.log('state state', state);
 
   const isInputEmpty =
     state.title === '' ||
@@ -118,7 +114,7 @@ const Form = ({ assignment }) => {
     <div className="grid-element ">
       <div className="box1 col-span-2 w-96">
         <form className="box2 border-blue-fifty bg-white ">
-          <div className="text-2xl font-semibold">Create Assignment</div>
+          <div className="text-2xl font-semibold">Assignment</div>
           <div className="form-group">
             <label htmlFor="title">title</label>
             <FormInputName value={state.title} handleChange={handleChange} name="title" />
@@ -197,3 +193,8 @@ const Form = ({ assignment }) => {
 };
 
 export default Form;
+
+// propType validation
+Form.propTypes = {
+  assignment: PropTypes.object
+};

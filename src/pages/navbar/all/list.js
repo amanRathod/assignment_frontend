@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import moment from 'moment';
-import { FaFile, FaFilePdf } from 'react-icons/fa';
+import { FaFilePdf } from 'react-icons/fa';
 import UserDataContext from '../../../utilities/context/userData';
 import Details from './details';
 import Option from './option';
@@ -33,7 +33,7 @@ const List = () => {
             </thead>
             <tbody>
               {state.assignment ? (
-                state.assignment.map((item, idx) => (
+                state.assignment.map((item) => (
                   <>
                     <tr
                       key={item._id}

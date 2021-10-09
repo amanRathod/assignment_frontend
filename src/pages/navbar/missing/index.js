@@ -1,13 +1,11 @@
 import React from 'react';
+import List from './misssing';
 
-const Missing = () => {
-  const [state, setState] = React.useState({});
-  return (
-    <div>
-      <h1>Missing</h1>
-      <p> This is Missing </p>
-    </div>
-  );
-};
+const Missing = () => (
+  <div>
+    <h1>Missing</h1>
+    <List />
+  </div>
+);
 
 export default Missing;

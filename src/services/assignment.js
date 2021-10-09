@@ -26,7 +26,6 @@ export async function SubmitAssignmentApi(formData) {
       }
     };
     const response = await axios.post(`${link}/submission/`, formData, configs);
-    console.log(response);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -35,8 +34,7 @@ export async function SubmitAssignmentApi(formData) {
 
 export async function GetAssignmentApi(data) {
   try {
-    const response = await axios.get(`${link}/submission/get-assignment`, config);
-    console.log(response);
+    const response = await axios.get(`${link}/submission/`, data, config);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -46,7 +44,6 @@ export async function GetAssignmentApi(data) {
 export async function createAssignment(formData) {
   try {
     const response = await axios.post(`${link}/assignment/create`, formData, configs);
-    console.log(response);
     return response.data;
   } catch (err) {
     console.log(err);

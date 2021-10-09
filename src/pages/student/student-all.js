@@ -3,7 +3,6 @@ import UserDataContext from '../../utilities/context/userData';
 
 const Student = () => {
   const { state } = useContext(UserDataContext);
-  console.log('state state', state);
   return (
     <div className="px-4 py-4 mt-8 bg-white dark:bg-grey-seven rounded-lg large-x-y">
       <h2 className="mb-4 text-xl font-bold dark-nine lg:mb-6">Students</h2>
