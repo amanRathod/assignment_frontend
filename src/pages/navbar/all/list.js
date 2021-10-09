@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import moment from 'moment';
 import { FaFile, FaFilePdf } from 'react-icons/fa';
 import UserDataContext from '../../../utilities/context/userData';
 import Details from './details';
@@ -44,13 +45,17 @@ const List = () => {
                         {item.title}
                       </td>
                       <td className="table-x-y">{item.totalMarks}&nbsp;pts</td>
-                      <td className="table-x-y">{item.dueDate}</td>
-                      <td
-                        className={`table-x-y ${
-                          item.status === 'inactive' ? 'status1' : 'status2'
-                        }`}
-                      >
-                        {item.status}
+                      <td className="table-x-y">{moment(item.dueDate).format('DD-MM-YYYY')}</td>
+                      <td className="table-x-y ">
+                        <span
+                          className={
+                            (item.status === 'missing' && 'status-red') ||
+                            (item.status === 'completed' && 'status-green') ||
+                            'status-yellow'
+                          }
+                        >
+                          {item.status}
+                        </span>
                       </td>
                     </tr>
                     <Details data={item} id={id} />

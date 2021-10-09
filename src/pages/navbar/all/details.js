@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
+import moment from 'moment';
 import UserDataContext from '../../../utilities/context/userData';
 
 const Details = ({ data, id }) => {
@@ -40,12 +41,12 @@ const Details = ({ data, id }) => {
             <p>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </p>
-            <p>{data.dueDate}</p>
+            <p>{moment(data.dueDate).format('DD-MM-YYYY')}</p>
           </div>
           <div className="flex">
             <p className="dark-nine">published:</p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            <p>{data.startDate}</p>
+            <p>{moment(data.startDate).format('DD-MM-YYYY')}</p>
           </div>
           <div className="flex">
             <p className="dark-nine">points:</p>
@@ -55,7 +56,7 @@ const Details = ({ data, id }) => {
           <div className="flex">
             <p className="dark-nine">Graded:</p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            <p>14</p>
+            <p>{data.submission.length} students</p>
           </div>
         </div>
       </div>

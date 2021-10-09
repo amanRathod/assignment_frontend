@@ -1,23 +1,21 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable prettier/prettier */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/prop-types */
+
 import React, { useContext, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import moment from 'moment';
 import UserDataContext from '../../../utilities/context/userData';
 import notify from '../../../components/public/notification';
 import { SubmitAssignmentApi } from '../../../services/assignment';
 
-const SubmitAssignment = ({ data, id }) => {
+const SubmitAssignment = ({ data, id, setId }) => {
   const { state, dispatch } = useContext(UserDataContext);
   const [temperoryLink, setTemperorylink] = useState('');
   const [assignment, setAssignment] = useState('');
   console.log(state);
   console.log('data', assignment);
-
 
   const handleFileUpload = (e) => {
     const linkObject = e.target.files[0];
@@ -29,7 +27,6 @@ const SubmitAssignment = ({ data, id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-
       // forData to send file to backened server and get the response back from server and then update the state of the component with the response data
       const formData = new FormData();
       formData.append('file', assignment);
@@ -39,17 +36,19 @@ const SubmitAssignment = ({ data, id }) => {
       if (assignment === '') {
         notify({
           type: 'warning',
-          message: 'Please select a file',
-        })
+          message: 'Please select a file'
+        });
       } else {
         const response = await SubmitAssignmentApi(formData);
         notify(response);
-        console.log('response', response);
+        if (response.type === 'success') {
+          setId('');
+        }
       }
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   return (
     <div className={`${data._id === id && state.userType === 'Student' ? 'visible' : 'hidden'} `}>
@@ -66,7 +65,7 @@ const SubmitAssignment = ({ data, id }) => {
           <p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
-          <p>{data.dueDate}</p>
+          <p>{moment(data.dueDate).format('DD-MM-YYYY')}</p>
         </div>
         <div className="flex">
           <p className="dark-nine">points:</p>
@@ -76,27 +75,21 @@ const SubmitAssignment = ({ data, id }) => {
         <div className="flex flex-col">
           <p>submit assignment:</p>
           <div className="col">
-            <object
-              data={temperoryLink}
-              type="application/pdf"
-              width="100%"
-              height="100%"
-             />
+            <object data={temperoryLink} type="application/pdf" width="100%" height="100%" />
             <div className="flex">
-
-            <label className="btn">
-              <input
-                type="file"
-                name="file"
-                style={{ display: 'none' }}
-                onChange={handleFileUpload}
-                required
-              />{' '}
-              Upload file
-            </label>
-            <button type="submit" className="btn bg-red-five" onClick={handleSubmit}>
-              Submit
-            </button>
+              <label className="btn">
+                <input
+                  type="file"
+                  name="file"
+                  style={{ display: 'none' }}
+                  onChange={handleFileUpload}
+                  required
+                />{' '}
+                Upload file
+              </label>
+              <button type="submit" className="btn bg-red-five" onClick={handleSubmit}>
+                Submit
+              </button>
             </div>
           </div>
         </div>

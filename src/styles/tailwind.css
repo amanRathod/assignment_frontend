@@ -99,11 +99,14 @@
   .box-border {
     @apply border border-blue-one rounded-lg hover
   }
-  .status1 {
-    @apply px-3 mb-2 text-base text-red-five bg-red-one rounded-full
+  .status-red {
+    @apply w-16 px-3 py-1 text-xs text-center text-red-six uppercase bg-red-two rounded-full
   }
-  .status2 {
-    @apply px-3 mb-2 text-base text-green-five bg-green-one rounded-full
+  .status-green {
+    @apply w-16 px-3 py-1 text-xs text-center text-green-six uppercase bg-green-two rounded-full
+  }
+  .status-yellow {
+    @apply w-16 px-3 py-1 text-xs text-center text-yellow-eight uppercase bg-yellow-two rounded-full
   }
   
 }  

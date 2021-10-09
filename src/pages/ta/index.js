@@ -35,9 +35,7 @@ const TeachingAssistant = () => {
                   <span className="font-bold dark-nine ">{ta.name}</span>
                   <span className="text-sm font-bold dark-eight opacity-50">View profile</span>
                 </div>
-                <span className="px-3 mb-2 text-base text-green-five bg-green-one rounded-full border-full">
-                  TA
-                </span>
+                <span className="status-green">TA</span>
               </div>
               <div className={state.currentNav !== 'ta' && 'hdden'}>
                 <Student ta={ta} id={id} setId={setId} />
