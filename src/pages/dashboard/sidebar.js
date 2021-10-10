@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { LogoutIcon, UsersIcon } from '@heroicons/react/solid';
+import Cookies from 'js-cookie';
+import { LogoutIcon, UsersIcon, UserIcon, UserGroupIcon } from '@heroicons/react/solid';
 import * as ROUTES from '../../constants/routes';
 import DarkMode from '../../components/public/dark_mode';
 import UserDataContext from '../../utilities/context/userData';
@@ -27,6 +28,10 @@ const Sidebar = ({ toggle }) => {
     e.preventDefault();
     try {
       localStorage.clear();
+      if (Cookies.get('token')) {
+        Cookies.remove('token');
+        Cookies.remove('user');
+      }
       history.push('/login');
       notify({
         type: 'success',
@@ -53,7 +58,12 @@ const Sidebar = ({ toggle }) => {
         <nav className="-mx-2 md:mt-8">
           <ul className="pt-2 space-y-3 text-base">
             <li>
-              <a href={ROUTES.DASHBOARD} className="sidebar-nav">
+              <a
+                href={ROUTES.DASHBOARD}
+                className={`sidebar-nav ${
+                  state.currentNav === 'all' && 'bg-current-Navbar focus-ring'
+                }`}
+              >
                 <svg
                   className="w-6 h-6 text-blue-seven"
                   fill="currentColor"
@@ -66,15 +76,39 @@ const Sidebar = ({ toggle }) => {
               </a>
             </li>
             <li className={`${state.userType === 'TA' && 'hidden'}`}>
-              <a onClick={() => handleNav('ta')} aria-hidden="true" className="sidebar-nav">
-                <UsersIcon className="icon1" />
+              <a
+                onClick={() => handleNav('ta')}
+                aria-hidden="true"
+                className={`sidebar-nav ${
+                  state.currentNav === 'ta' && 'bg-current-Navbar focus-ring'
+                }`}
+              >
+                <UserGroupIcon className="icon1" />
                 <span className="flex-1">Teaching Assistant</span>
               </a>
             </li>
             <li className={`${state.userType === 'Student' && 'hidden'}`}>
-              <a onClick={() => handleNav('student')} aria-hidden="true" className="sidebar-nav">
-                <UsersIcon className="icon1" />
+              <a
+                onClick={() => handleNav('student')}
+                aria-hidden="true"
+                className={`sidebar-nav ${
+                  state.currentNav === 'student' && 'bg-current-Navbar focus-ring'
+                }`}
+              >
+                <UserGroupIcon className="icon1" />
                 <span className="flex-1">Students</span>
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => handleNav('profile')}
+                aria-hidden="true"
+                className={`sidebar-nav ${
+                  state.currentNav === 'profile' && 'bg-current-Navbar focus-ring'
+                }`}
+              >
+                <UserIcon className="icon1" />
+                <span className="flex-1">Profile</span>
               </a>
             </li>
             <li>
@@ -93,7 +127,13 @@ const Sidebar = ({ toggle }) => {
         <img src={state.avatar} alt={`${state.name} profile`} className="rounded-full w-14 h-14" />
         <div className="col xl:items-start">
           <span className="font-bold dark-eight">{state.name}</span>
-          <span className="text-sm font-bold dark-nine opacity-50">View profile</span>
+          <span
+            className="text-sm font-bold dark-nine opacity-80"
+            onClick={() => handleNav('profile')}
+            aria-hidden="true"
+          >
+            View profile
+          </span>
         </div>
       </button>
     </div>

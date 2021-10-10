@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as ROUTES from '../../constants/routes';
@@ -16,6 +16,7 @@ const SetPasswordView = () => {
   const history = useHistory();
   const [state, setState] = useState({
     password: '',
+    confirmPassword: '',
     error2: '',
     error3: '',
     token
@@ -46,8 +47,8 @@ const SetPasswordView = () => {
     try {
       e.preventDefault();
       const response = await UserResetPassword(state);
+      state.password = '';
       notify(response);
-      history.push(ROUTES.LOGIN);
     } catch (error) {
       console.log(error);
       notify({
@@ -92,6 +93,9 @@ const SetPasswordView = () => {
         >
           Submit
         </button>
+        <div className="text-center text-color mt-4 underline">
+          <Link to={ROUTES.LOGIN}>Back to login</Link>
+        </div>
       </form>
     </div>
   );

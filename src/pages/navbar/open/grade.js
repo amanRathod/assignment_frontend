@@ -11,7 +11,8 @@ const Grade = () => {
   const handleSubmit = async (id) => {
     try {
       const data = {
-        assignmentId: id,
+        submittedAssignmentId: id,
+        assignmentId: state.gradeSubmittedAssignment[0].assignmentId,
         grade,
         submission_status: 'accepted'
       };
@@ -32,6 +33,7 @@ const Grade = () => {
             <thead className="text-left bg-blue-fifty dark:bg-grey-six">
               <tr>
                 <th className="table-x-y">Assignment</th>
+                <th className="table-x-y">Submitted</th>
                 <th className="table-x-y">Points</th>
               </tr>
             </thead>
@@ -39,11 +41,7 @@ const Grade = () => {
               {state.gradeSubmittedAssignment ? (
                 state.gradeSubmittedAssignment.map((item) => (
                   <>
-                    <tr
-                      key={item._id}
-                      className="dark-nine divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap"
-                      // onClick={() => handleToggle(item._id)}
-                    >
+                    <tr key={item._id} className="small-box">
                       <td className="table-x-y flex cursor-pointer">
                         <FaFilePdf className="w-6 h-6" />
                         <a
@@ -56,9 +54,14 @@ const Grade = () => {
                         </a>
                       </td>
                       <td className="table-x-y">
+                        <span>{item.student_id.name}</span>
+                        <p>registration_no: {item.student_id.registration_no}</p>
+                      </td>
+                      <td className="table-x-y">
                         <input
-                          className="h-5 w-10 border-2"
-                          disabled={item.grade}
+                          className="h-8 w-20 dark-nine dark:text-blue-nine border-2"
+                          placeholder="grade"
+                          disabled={item.grade || state.userType === 'Admin'}
                           value={item.grade}
                           onChange={(e) => setGrade(e.target.value)}
                         />
@@ -71,7 +74,6 @@ const Grade = () => {
                         </button>
                       </td>
                     </tr>
-                    {/* <Details data={item} id={id} /> */}
                   </>
                 ))
               ) : (

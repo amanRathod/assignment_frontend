@@ -10,17 +10,15 @@ const Hero = () => (
           <span className="text-blue-seven font-bold text-4xl dark-nine">Assignment</span>
         </h1>
         <p className="hidden lg:flex mt-4  text-gray dark-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          Assignment management dashboard is a simple dashboard to manage the assignment of the
+          students and teachers of any Institute.
         </p>
       </div>
       <div className="order-2 col-span-2 md:order-2 xl:col-span-3">
         <img
           rel="preload"
-          src={hero}
+          src="https://bucket-007.s3.ap-south-1.amazonaws.com/slack-trello-screens-by-oblik-studio.svg"
           alt="Hero"
-          srcSet={`${hero} 300w, ${hero} 600w `}
-          className="h-180 w-105 md:h-138 md:w-235 lg:h-248 lg:w-245"
         />
       </div>
     </div>

@@ -7,7 +7,7 @@ const Date = ({ value, handleChange, name }) => (
     type="date"
     name={name}
     value={value}
-    className="input-control"
+    className="input-name"
     onChange={handleChange}
     required
   />

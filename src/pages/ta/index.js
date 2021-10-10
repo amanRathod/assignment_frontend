@@ -17,7 +17,7 @@ const TeachingAssistant = () => {
     }
   };
   return (
-    <div className="px-4 py-4 mt-8 bg-white dark:bg-grey-seven rounded-lg large-x-y">
+    <div className="box-border1">
       <ToastContainer />
       <h2 className="mb-4 text-xl font-bold dark-nine lg:mb-6">Teaching Assistant</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-1 md:gap-12">
@@ -27,13 +27,15 @@ const TeachingAssistant = () => {
               <div
                 key={index}
                 aria-hidden="true"
-                className="flex bg-blue-fifty items-center w-full space-x-4 focus-ring"
+                className="flex  hover items-center w-full space-x-4 rounded-lg focus-ring"
                 onClick={() => handleToggle(ta._id)}
               >
                 <img src={ta.avatar} alt={ta.name} className="rounded-full w-14 h-14" />
                 <div className="flex flex-col items-start flex-1 text-sm">
                   <span className="font-bold dark-nine ">{ta.name}</span>
-                  <span className="text-sm font-bold dark-eight opacity-50">View profile</span>
+                  <span className="text-sm font-bold dark-eight opacity-80">
+                    registration_no: {ta.registration_no}
+                  </span>
                 </div>
                 <span className="status-green">TA</span>
               </div>

@@ -20,6 +20,8 @@ const SubmitAssignment = ({ data, id, setId }) => {
   const assignmentAccepted =
     submittedAssignment && submittedAssignment.submission_status === 'accepted';
 
+  console.log('subb', submittedAssignment);
+
   // upload assignment
   const handleFileUpload = (e) => {
     const linkObject = e.target.files[0];
@@ -34,7 +36,7 @@ const SubmitAssignment = ({ data, id, setId }) => {
       // forData to send file to backened server and get the response back from server and then update the state of the component with the response data
       const formData = new FormData();
       formData.append('file', assignmentObject);
-      formData.append('assignmentId', id);
+      formData.append('assignmentId', data._id);
 
       if (assignmentObject === '') {
         notify({
@@ -79,13 +81,15 @@ const SubmitAssignment = ({ data, id, setId }) => {
 
   useEffect(() => {
     // get the submitted assignment of the student for this particular assignment
-    if (state.submittedAssignment) {
-      const assignment = state.submittedAssignment.map((assignment) => {
+    if (id && state.submittedAssignment) {
+      state.submittedAssignment.map((assignment) => {
         if (assignment.assignmentId === id) {
+          setSubmittedAssignment(assignment);
           return assignment;
         }
       });
-      setSubmittedAssignment(assignment[0]);
+    } else {
+      setSubmittedAssignment('');
     }
   }, [id]);
 
@@ -94,12 +98,19 @@ const SubmitAssignment = ({ data, id, setId }) => {
       <ToastContainer />
       <h1>Details</h1>
       <div className="flex-col m-4">
-        <h1 className={assignmentAccepted ? 'visible' : 'hiden'}>
+        <h1 className={assignmentAccepted ? 'visible' : 'hidden'}>
           Your assignment is accepted and graded with{' '}
           {submittedAssignment && submittedAssignment.grade} marks
         </h1>
         <div className="flex">
-          <p className="dark-nine">description:</p>
+          <p className="dark-nine">Assignment:</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <a target="_blank" href={data.filePath} className="underline" rel="noreferrer">
+            link
+          </a>
+        </div>
+        <div className="flex">
+          <p className="dark-nine">Description:</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
           <p>{data.description}</p>
         </div>
@@ -116,7 +127,7 @@ const SubmitAssignment = ({ data, id, setId }) => {
           <p>{data.totalMarks}</p>
         </div>
         <div className="flex flex-col">
-          <p>submit assignment:</p>
+          <p className="dark-nine">submit assignment:</p>
           <div className="col">
             <object data={temperoryLink} type="application/pdf" width="100%" height="100%">
               <a
@@ -168,6 +179,6 @@ export default SubmitAssignment;
 // props validation
 SubmitAssignment.propTypes = {
   data: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   setId: PropTypes.func.isRequired
 };

@@ -12,6 +12,9 @@
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-blue-five focus:ring-opacity-60
   }
+  .bg-gradient {
+    @apply bg-gradient-to-r from-black-base to-blue-two;
+  }
   
   .btn {
     @apply py-2 max-w-xs px-4 mr-4 mt-4 font-bold rounded-2xl bg-blue-five text-white tracking-tighter text-base focus:outline-none  focus:ring-2 focus:ring-offset-2 duration-500 focus:ring-blue-seven;
@@ -63,6 +66,9 @@
   .input-control {
     @apply w-80 bg-blue-fifty border-gray-base border-opacity-50 border-2 rounded-2xl p-2 mb-2  focus-ring
   }
+  .input-name {
+    @apply px-3 py-3 placeholder-gray-base text-gray-base relative  bg-blue-fifty rounded text-sm border-0 shadow outline-none w-full focus-ring
+  }
   .text-color {
     @apply dark-nine text-lg font-semibold ;
   }
@@ -107,6 +113,12 @@
   }
   .status-yellow {
     @apply w-16 px-3 py-1 text-xs text-center text-yellow-eight uppercase bg-yellow-two rounded-full
+  }
+  .box-border1 {
+    @apply px-4 py-4 mt-8 bg-white dark:bg-grey-eight rounded-lg large-x-y
+  }
+  .small-box {
+    @apply dark-nine hover rounded-lg divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap
   }
   
 }  

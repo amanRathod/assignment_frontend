@@ -16,7 +16,7 @@ const Features = () => (
               content="Admin can create an assignment which will be a doc/pdf file"
             />
             <Card
-              heading="Sbumit Assignment"
+              heading="Submit Assignment"
               no="2"
               content="Student can submit an assignment to the respective assign Teaching Assistant"
             />
@@ -30,10 +30,8 @@ const Features = () => (
         <div className="order-2 col-span-2 md:order-1 xl:col-span-3">
           <img
             rel="preload"
-            src={feature}
+            src="https://bucket-007.s3.ap-south-1.amazonaws.com/Work+Hard-06.svg"
             alt="svg"
-            srcSet={`${feature} 300w, ${feature} 600w `}
-            className="h-180 w-105 md:h-138 md:w-235 lg:h-248 lg:w-245"
           />
         </div>
       </div>

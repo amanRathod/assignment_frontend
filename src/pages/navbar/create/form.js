@@ -111,83 +111,109 @@ const Form = ({ assignment }) => {
   };
 
   return (
-    <div className="grid-element ">
-      <div className="box1 col-span-2 w-96">
-        <form className="box2 border-blue-fifty bg-white ">
-          <div className="text-2xl font-semibold">Assignment</div>
-          <div className="form-group">
+    <div className="box-border1">
+      <form className="">
+        <div className="text-2xl dark-nine font-bold">Assignment</div>
+        <div className="mb-6">
+          <div>
             <label htmlFor="title">title</label>
-            <FormInputName value={state.title} handleChange={handleChange} name="title" />
           </div>
-          <div className="form-group">
-            <label htmlFor="title">description</label>
-            <FormInputName
-              value={state.description}
-              handleChange={handleChange}
-              name="description"
-            />
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter title"
+            className="input-name"
+            value={state.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <div>
+            <label htmlFor="description">description</label>
           </div>
+          <input
+            type="text"
+            name="description"
+            placeholder="Enter description"
+            className="input-name"
+            value={state.description}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
           <div>
             <label htmlFor="startDate">Start Date</label>
-            <Date value={state.startDate} handleChange={handleChange} name="startDate" />
           </div>
+          <Date value={state.startDate} handleChange={handleChange} name="startDate" />
+        </div>
+        <div>
           <div>
             <label htmlFor="dueDate">Due Date</label>
-            <Date value={state.dueDate} handleChange={handleChange} name="dueDate" />
           </div>
+          <Date value={state.dueDate} handleChange={handleChange} name="dueDate" />
+        </div>
+        <div className="mt-4">
           <div>
             <label htmlFor="Total Marks">Total Marks</label>
-            <FormInputNumber
-              value={state.totalMarks}
-              handleChange={handleChange}
-              name="totalMarks"
-            />
           </div>
-          <div className="flex flex-col">
-            <p>submit assignment:</p>
-            <div className="col">
-              <object data={state.temperoryLink} type="application/pdf" width="100%" height="100%">
-                <a
-                  href={assignment ? assignment.filePath : null}
-                  className={`text-xl ${assignment ? 'visible' : 'hidden'}`}
-                >
-                  Assignment PDF!
-                </a>
-              </object>
-              <div className="flex">
-                <label className="btn">
-                  <input
-                    type="file"
-                    name="file"
-                    style={{ display: 'none' }}
-                    onChange={handleFileUpload}
-                    required
-                  />{' '}
-                  Upload file
-                </label>
-              </div>
+          <input
+            type="text"
+            name="totalMarks"
+            placeholder="Enter Marks"
+            className="input-name"
+            value={state.totalMarks}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col mt-4">
+          <div>
+            <label htmlFor="assignmet">Submit Assignment:</label>
+          </div>
+          <div className="col">
+            <object data={state.temperoryLink} type="application/pdf" width="100%" height="100%">
+              <a
+                href={assignment ? assignment.filePath : null}
+                className={`text-xl underline ${assignment ? 'visible' : 'hidden'}`}
+              >
+                Assignment PDF!
+              </a>
+            </object>
+            <div className="flex">
+              <label className="btn">
+                <input
+                  type="file"
+                  name="file"
+                  style={{ display: 'none' }}
+                  onChange={handleFileUpload}
+                  required
+                />{' '}
+                Upload file
+              </label>
             </div>
           </div>
-          <div className="button">
-            <button
-              type="submit"
-              onClick={assignment ? handleEdit : handleSubmit}
-              className={`btn ${isInputEmpty && 'opacity-70 cursor-not-allowed'} 
+        </div>
+        <div className="button">
+          <button
+            type="submit"
+            onClick={assignment ? handleEdit : handleSubmit}
+            className={`btn ${isInputEmpty && 'opacity-70 cursor-not-allowed'} 
               }`}
-              disabled={isInputEmpty}
-            >
-              Submit
-            </button>
-            <button
-              type="submit"
-              onClick={handleDelete}
-              className={`btn bg-red-five ${assignment ? 'visible' : 'hidden'}`}
-            >
-              Delete
-            </button>
-          </div>
-        </form>
-      </div>
+            disabled={isInputEmpty}
+          >
+            Submit
+          </button>
+          <button
+            type="submit"
+            onClick={handleDelete}
+            className={`btn bg-red-five ${assignment ? 'visible' : 'hidden'}`}
+          >
+            Delete
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

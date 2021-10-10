@@ -73,17 +73,22 @@ const Student = ({ ta, id, setId }) => {
     <div
       className={` ${
         ta._id === id && state.userType === 'Admin' ? 'visible' : 'hidden'
-      } px-4 py-4 mt-8 bg-white dark:bg-grey-seven rounded-lg large-x-y`}
+      } box-border1`}
     >
       <h2 className="mb-4 text-xl font-bold dark-nine lg:mb-6">Students</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-1 md:gap-12">
         {state.students ? (
           state.students.map((student, index) => (
-            <div key={index} className="flex items-center w-full space-x-4 focus-ring">
-              <img src={student.avatar} alt={student.name} className="rounded-full w-14 h-14" />
+            <div
+              key={index}
+              className="flex hover rounded-lg items-center w-full space-x-4 focus-ring"
+            >
+              <img src={student.avatar} alt="profile" className="rounded-full w-14 h-14" />
               <div className="flex flex-col items-start flex-1 text-sm">
                 <span className="font-bold dark-nine ">{student.name}</span>
-                <span className="text-sm font-bold dark-eight opacity-50">View profile</span>
+                <span className="text-sm font-bold dark-eight opacity-80">
+                  registration_no: {student.registration_no}
+                </span>
               </div>
               <div>
                 <input

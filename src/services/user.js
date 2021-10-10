@@ -20,8 +20,33 @@ export async function UserUpdate(data) {
   }
 }
 
+export async function GoogleUserUpdate(data) {
+  try {
+    const token = localStorage.getItem('accessToken');
+
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
+    const response = await axios.post(`${link}/user/updateGoogleProfile`, data, config);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export async function GetStudentData() {
   try {
+    const token = localStorage.getItem('accessToken');
+
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
     const response = await axios.get(`${link}/student`, config);
     return response.data;
   } catch (err) {
@@ -31,6 +56,14 @@ export async function GetStudentData() {
 
 export async function GetTAData() {
   try {
+    const token = localStorage.getItem('accessToken');
+
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
     const response = await axios.get(`${link}/TA`, config);
     return response.data;
   } catch (err) {
@@ -40,6 +73,15 @@ export async function GetTAData() {
 
 export async function GetAdminData() {
   try {
+    const token = localStorage.getItem('accessToken');
+
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
+    console.log('ty', token);
     const response = await axios.get(`${link}/admin`, config);
     return response.data;
   } catch (err) {

@@ -1,3 +1,5 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-expressions */
 import React, { useEffect, useState, useReducer } from 'react';
 import MobileBar from '../../pages/dashboard/mobile-bar';
 import Sidebar from '../../pages/dashboard/sidebar';
@@ -7,7 +9,8 @@ import { GetStudentData, GetTAData, GetAdminData } from '../../services/user';
 
 const DashboardView = () => {
   const [toggle, setToggle] = useState(true);
-  const userType = localStorage.getItem('user_type');
+  let userType = localStorage.getItem('user_type');
+  console.log('user user', userType);
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -24,6 +27,9 @@ const DashboardView = () => {
         return { ...state, [action.fieldName]: action.payload };
       }
       case 'avatar': {
+        return { ...state, [action.fieldName]: action.payload };
+      }
+      case 'phone': {
         return { ...state, [action.fieldName]: action.payload };
       }
       case 'institute': {
@@ -53,6 +59,7 @@ const DashboardView = () => {
   const InitialState = {
     name: '',
     registration_no: '',
+    phone: '',
     institute: '',
     avatar: '',
     userType: '',
@@ -72,6 +79,7 @@ const DashboardView = () => {
     try {
       // get logged-In user Data
       let response;
+      if (state.userType) userType = state.userType;
       if (userType === 'Student') {
         response = await GetStudentData();
       } else if (userType === 'TA') {
@@ -104,6 +112,7 @@ const DashboardView = () => {
       });
       dispatch({ type: 'students', fieldName: 'students', payload: students });
       dispatch({ type: 'userType', fieldName: 'userType', payload: data.user_type });
+      dispatch({ type: 'phone', fieldName: 'phone', payload: data.phone });
     } catch (error) {
       console.log(error);
     }

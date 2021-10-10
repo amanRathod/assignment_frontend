@@ -35,11 +35,7 @@ const List = () => {
               {state.assignment ? (
                 state.assignment.map((item) => (
                   <>
-                    <tr
-                      key={item._id}
-                      className="dark-nine divide-y divide-blue-one dark:divide-grey-six text-opacity-80 whitespace-nowrap"
-                      onClick={() => handleToggle(item._id)}
-                    >
+                    <tr key={item._id} className="small-box" onClick={() => handleToggle(item._id)}>
                       <td className="table-x-y flex cursor-pointer">
                         <FaFilePdf className="w-6 h-6" />
                         {item.title}

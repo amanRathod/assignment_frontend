@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import notify from '../../components/public/notification';
 import ValidateEmail from '../../utilities/validation/email';
 import FormInputEmail from '../../components/input/email';
+import * as ROUTES from '../../constants/routes';
 import { UserForgotPassword } from '../../services/auth';
 
 const ForgotPassword = () => {
@@ -25,6 +26,7 @@ const ForgotPassword = () => {
     try {
       e.preventDefault();
       const response = await UserForgotPassword(state);
+      state.email = '';
       notify(response);
     } catch (err) {
       console.error(err);
@@ -32,7 +34,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="box1 h-screen">
+    <div className="box1 h-screen bg-gradient">
       <ToastContainer />
       <form onSubmit={_handleSubmit} className="box2 bg-white">
         <fieldset>
@@ -53,7 +55,7 @@ const ForgotPassword = () => {
           Submit
         </button>
         <div className="text-center text-color mt-4 underline">
-          <Link to="/login">Back to login</Link>
+          <Link to={ROUTES.LOGIN}>Back to login</Link>
         </div>
       </form>
     </div>

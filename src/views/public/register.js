@@ -72,7 +72,11 @@ export default function RegisterView() {
     <div className="box1 h-screen bg-gradient">
       <ToastContainer />
       <form onSubmit={_handleSubmit} className="box2 bg-white">
-        <img src={Registration} alt="Register" className="h-16 w-16" />
+        <img
+          src="https://bucket-007.s3.ap-south-1.amazonaws.com/Registration.svg"
+          alt="Register"
+          className="h-16 w-16"
+        />
         <fieldset>
           <div>
             <div>

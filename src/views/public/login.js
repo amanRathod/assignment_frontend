@@ -39,6 +39,7 @@ export default function LoginView() {
         localStorage.setItem('user', response.email);
         localStorage.setItem('user_type', response.user_type);
         localStorage.setItem('accessToken', response.token);
+        console.log(response);
         if (response.bool === false) {
           history.push(ROUTES.PERSONAL_DETAILS);
         } else {
@@ -55,10 +56,14 @@ export default function LoginView() {
   }, []);
 
   return (
-    <div className="box1 h-screen">
+    <div className="box1 h-screen bg-gradient">
       <ToastContainer />
       <form className="box2 bg-white">
-        <img src={UserSecurity} alt="svg" className="h-16 w-16" />
+        <img
+          src="https://bucket-007.s3.ap-south-1.amazonaws.com/User+Security.svg"
+          alt="svg"
+          className="h-16 w-16"
+        />
         <fieldset>
           <div>
             <div>
@@ -90,7 +95,7 @@ export default function LoginView() {
             Login
           </button>
         </div>
-        <p className="mt-4">--------or Login with----------</p>
+        <p className="mt-4">or Login with</p>
         <button type="submit" className="text-white bg-red-secondary btn">
           <a href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fauth%2Fgoogle&client_id=845801222492-g34p0uiarsilajl4bf0uqolj2smg9do6.apps.googleusercontent.com&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email">
             Google

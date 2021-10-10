@@ -48,7 +48,7 @@ const notify = ({ type, message }) => {
       });
       break;
     default:
-      toast('It is default', {
+      toast('Server is Invalid', {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,

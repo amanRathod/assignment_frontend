@@ -10,6 +10,7 @@ import Missing from '../navbar/missing';
 import Grade from '../navbar/open/grade';
 import Create from '../navbar/create';
 import Assign from '../navbar/assign';
+import Profile from '../profile/profile';
 import UserDataContext from '../../utilities/context/userData';
 
 const Dashboard = () => {
@@ -33,6 +34,7 @@ const Dashboard = () => {
       {state.currentNav === 'grade' && <Grade />}
       {state.currentNav === 'student' && <Student />}
       {state.currentNav === 'ta' && <TA />}
+      {state.currentNav === 'profile' && <Profile />}
     </div>
   );
 };

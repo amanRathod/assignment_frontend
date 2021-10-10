@@ -1,24 +1,27 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as ROUTES from '../../constants/routes';
 import FormInputName from '../../components/input/name';
 import Date from '../../components/input/date';
 import FormInputNumber from '../../components/input/number';
 import details from '../../asserts/images/details.svg';
-import { UserUpdate } from '../../services/user';
-import notify from '../../components/public/notification';
+import { UserUpdate, GoogleUserUpdate } from '../../services/user';
 
 const PersonalDetails = () => {
   const history = useHistory();
   const [state, setState] = useState({
     institute: '',
+    userType: '',
     registration_no: '',
     dateOfBirth: '',
     phone: ''
   });
+
+  const userAuth = Cookies.get('user');
+  console.log(userAuth);
 
   const isInputEmpty =
     state.institute === '' ||
@@ -37,13 +40,25 @@ const PersonalDetails = () => {
     try {
       e.preventDefault();
       const response = await UserUpdate(state);
-      notify(response);
       if (response.type === 'success') {
         history.push(ROUTES.DASHBOARD);
       }
     } catch (error) {
       console.log(error);
-      notify(error);
+    }
+  };
+
+  const handleGoogleUser = async (e) => {
+    try {
+      e.preventDefault();
+      console.log('google', state);
+      const response = await GoogleUserUpdate(state);
+      if (response.type === 'success') {
+        localStorage.setItem('user_type', response.data);
+        history.push(ROUTES.DASHBOARD);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -52,23 +67,30 @@ const PersonalDetails = () => {
   }, []);
   return (
     <>
-      <ToastContainer />
       <div className="grid-element h-screen">
         <div className="box1 col-span-2 m-5">
           <img
             rel="preload"
-            src={details}
+            src="https://bucket-007.s3.ap-south-1.amazonaws.com/book-right-and-wrong-by-oblik-studio.svg"
             alt="details"
-            srcSet={`${details} 300w, ${details} 600w `}
-            className="h-180 w-105 md:h-138 md:w-235 lg:h-248 lg:w-245"
           />
         </div>
         <div className="box1 col-span-2">
-          <form onSubmit={_handleSubmit} className="box2">
+          <form className="box2">
             <div className="text-2xl font-semibold">Personal Details</div>
             <div className="form-group">
               <label htmlFor="institute">Institute</label>
               <FormInputName value={state.institute} handleChange={handleChange} name="institute" />
+            </div>
+            <div className={userAuth ? 'visible' : 'hidden'}>
+              <div>
+                <label htmlFor="userType">Role</label>
+              </div>
+              <select className="input-control" name="userType" onBlur={handleChange} required>
+                <option value="Student">Student</option>
+                <option value="Admin">Admin</option>
+                <option value="TA">Teaching Assistant</option>
+              </select>
             </div>
             <div>
               <label htmlFor="Registration No">Registration No.</label>
@@ -88,6 +110,7 @@ const PersonalDetails = () => {
             </div>
             <div className="button">
               <button
+                onClick={userAuth ? handleGoogleUser : _handleSubmit}
                 type="submit"
                 className={`btn ${isInputEmpty && 'opacity-70 cursor-not-allowed'}`}
                 disabled={isInputEmpty}
