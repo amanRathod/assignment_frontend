@@ -66,7 +66,9 @@ const Grade = () => {
                           onChange={(e) => setGrade(e.target.value)}
                         />
                         <button
-                          className={`btn ml-4 ${item.grade ? 'hidden' : 'visible'}`}
+                          className={`btn ml-4 ${
+                            item.grade || state.userType === 'Admin' ? 'hidden' : 'visible'
+                          }`}
                           type="submit"
                           onClick={() => handleSubmit(item._id)}
                         >

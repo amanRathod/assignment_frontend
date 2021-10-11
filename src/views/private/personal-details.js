@@ -21,7 +21,6 @@ const PersonalDetails = () => {
   });
 
   const userAuth = Cookies.get('user');
-  console.log(userAuth);
 
   const isInputEmpty =
     state.institute === '' ||
@@ -51,7 +50,6 @@ const PersonalDetails = () => {
   const handleGoogleUser = async (e) => {
     try {
       e.preventDefault();
-      console.log('google', state);
       const response = await GoogleUserUpdate(state);
       if (response.type === 'success') {
         localStorage.setItem('user_type', response.data);
@@ -75,7 +73,7 @@ const PersonalDetails = () => {
             alt="details"
           />
         </div>
-        <div className="box1 col-span-2">
+        <div className="box1 col-span-2 ">
           <form className="box2">
             <div className="text-2xl font-semibold">Personal Details</div>
             <div className="form-group">

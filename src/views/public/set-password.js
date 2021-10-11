@@ -50,7 +50,6 @@ const SetPasswordView = () => {
       state.password = '';
       notify(response);
     } catch (error) {
-      console.log(error);
       notify({
         type: 'error',
         message: error.message

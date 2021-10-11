@@ -7,7 +7,7 @@ const Date = ({ value, handleChange, name }) => (
     type="date"
     name={name}
     value={value}
-    className="input-name"
+    className={`${name === 'dateOfBirth' ? 'input-control' : 'input-name'}`}
     onChange={handleChange}
     required
   />

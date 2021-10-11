@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import ReactPlaceholder from 'react-placeholder';
 import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
-import { LogoutIcon, UsersIcon, UserIcon, UserGroupIcon } from '@heroicons/react/solid';
+import { LogoutIcon, UserIcon, UserGroupIcon } from '@heroicons/react/solid';
 import * as ROUTES from '../../constants/routes';
 import DarkMode from '../../components/public/dark_mode';
 import UserDataContext from '../../utilities/context/userData';
+import { profilePlaceholder, sidebarPlaceholder } from '../../components/public/placeholder';
 import notify from '../../components/public/notification';
 
 const Sidebar = ({ toggle }) => {
@@ -27,7 +29,9 @@ const Sidebar = ({ toggle }) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      localStorage.clear();
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('user');
+      localStorage.removeItem('user_type');
       if (Cookies.get('token')) {
         Cookies.remove('token');
         Cookies.remove('user');
@@ -75,30 +79,32 @@ const Sidebar = ({ toggle }) => {
                 <span className="flex-1">Dashboard</span>
               </a>
             </li>
-            <li className={`${state.userType === 'TA' && 'hidden'}`}>
-              <a
-                onClick={() => handleNav('ta')}
-                aria-hidden="true"
-                className={`sidebar-nav ${
-                  state.currentNav === 'ta' && 'bg-current-Navbar focus-ring'
-                }`}
-              >
-                <UserGroupIcon className="icon1" />
-                <span className="flex-1">Teaching Assistant</span>
-              </a>
-            </li>
-            <li className={`${state.userType === 'Student' && 'hidden'}`}>
-              <a
-                onClick={() => handleNav('student')}
-                aria-hidden="true"
-                className={`sidebar-nav ${
-                  state.currentNav === 'student' && 'bg-current-Navbar focus-ring'
-                }`}
-              >
-                <UserGroupIcon className="icon1" />
-                <span className="flex-1">Students</span>
-              </a>
-            </li>
+            <ReactPlaceholder ready={state.avatar} customPlaceholder={sidebarPlaceholder}>
+              <li className={`${state.userType === 'TA' && 'hidden'}`}>
+                <a
+                  onClick={() => handleNav('ta')}
+                  aria-hidden="true"
+                  className={`sidebar-nav ${
+                    state.currentNav === 'ta' && 'bg-current-Navbar focus-ring'
+                  }`}
+                >
+                  <UserGroupIcon className="icon1" />
+                  <span className="flex-1">Teaching Assistant</span>
+                </a>
+              </li>
+              <li className={`${state.userType === 'Student' && 'hidden'}`}>
+                <a
+                  onClick={() => handleNav('student')}
+                  aria-hidden="true"
+                  className={`sidebar-nav ${
+                    state.currentNav === 'student' && 'bg-current-Navbar focus-ring'
+                  }`}
+                >
+                  <UserGroupIcon className="icon1" />
+                  <span className="flex-1">Students</span>
+                </a>
+              </li>
+            </ReactPlaceholder>
             <li>
               <a
                 onClick={() => handleNav('profile')}
@@ -124,7 +130,9 @@ const Sidebar = ({ toggle }) => {
         </nav>
       </div>
       <button type="submit" className="profile-bar">
-        <img src={state.avatar} alt={`${state.name} profile`} className="rounded-full w-14 h-14" />
+        <ReactPlaceholder ready={state.avatar} customPlaceholder={profilePlaceholder}>
+          <img src={state.avatar} alt="profile" className="rounded-full w-14 h-14" />
+        </ReactPlaceholder>
         <div className="col xl:items-start">
           <span className="font-bold dark-eight">{state.name}</span>
           <span

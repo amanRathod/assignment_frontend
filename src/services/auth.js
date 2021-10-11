@@ -1,4 +1,5 @@
 import axios from 'axios';
+import notify from '../components/public/notification';
 
 const link = 'http://localhost:5000/api/v1/user';
 const config = {
@@ -10,7 +11,10 @@ export async function UserLogin(data) {
     const response = await axios.post(`${link}/login`, data, config);
     return response.data;
   } catch (err) {
-    console.log(err);
+    notify({
+      type: 'error',
+      message: err.message
+    });
   }
 }
 

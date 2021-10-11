@@ -39,7 +39,6 @@ export default function LoginView() {
         localStorage.setItem('user', response.email);
         localStorage.setItem('user_type', response.user_type);
         localStorage.setItem('accessToken', response.token);
-        console.log(response);
         if (response.bool === false) {
           history.push(ROUTES.PERSONAL_DETAILS);
         } else {

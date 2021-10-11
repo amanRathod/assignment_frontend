@@ -11,10 +11,8 @@ const Option = ({ data, id, setId }) => {
 
   useEffect(() => {
     if (id === '') {
-      console.log('not found');
       setCurrentOption('');
     } else if (data._id === id) {
-      console.log('found');
       dispatch({
         type: 'gradeSubmittedAssignment',
         fieldName: 'gradeSubmittedAssignment',

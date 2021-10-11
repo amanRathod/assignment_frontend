@@ -39,7 +39,7 @@ module.exports = {
         props: false
       }
     ],
-    'no-console': 0,
+    'no-console': 'off',
     'import/prefer-default-export': 1,
     import: 0,
     'func-names': 0,

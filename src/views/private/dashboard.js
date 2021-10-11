@@ -10,7 +10,6 @@ import { GetStudentData, GetTAData, GetAdminData } from '../../services/user';
 const DashboardView = () => {
   const [toggle, setToggle] = useState(true);
   let userType = localStorage.getItem('user_type');
-  console.log('user user', userType);
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -73,7 +72,6 @@ const DashboardView = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, InitialState);
-  console.log(state);
 
   const fetchData = async () => {
     try {

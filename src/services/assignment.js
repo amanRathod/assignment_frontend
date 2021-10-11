@@ -1,4 +1,5 @@
 import axios from 'axios';
+import notify from '../components/public/notification';
 
 const link = 'http://localhost:5000/api/v1';
 
@@ -10,25 +11,22 @@ const config = {
   }
 };
 
-const configs = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    Authorization: `Bearer ${token}`
-  }
-};
-
 export async function SubmitAssignmentApi(formData) {
   try {
-    const configs = {
+    const token = localStorage.getItem('accessToken');
+    const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ${token}`
       }
     };
-    const response = await axios.post(`${link}/submission/`, formData, configs);
+    const response = await axios.post(`${link}/submission/`, formData, config);
     return response.data;
   } catch (err) {
-    console.log(err);
+    notify({
+      type: 'error',
+      message: err.message
+    });
   }
 }
 
@@ -43,25 +41,53 @@ export async function GetAssignmentApi(data) {
 
 export async function createAssignment(formData) {
   try {
-    const response = await axios.post(`${link}/assignment/create`, formData, configs);
+    const token = localStorage.getItem('accessToken');
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    const response = await axios.post(`${link}/assignment/create`, formData, config);
     return response.data;
   } catch (err) {
-    console.log(err);
+    notify({
+      type: 'error',
+      message: err.message
+    });
   }
 }
 
 export async function evaluate(data) {
   try {
-    const response = await axios.put(`${link}/submission/evaluate`, data, config);
+    const token = localStorage.getItem('accessToken');
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
+    const response = await axios.post(`${link}/submission/evaluate`, data, config);
     return response.data;
   } catch (err) {
-    console.log(err);
+    notify({
+      type: 'error',
+      message: err.message
+    });
   }
 }
 
 export async function editAssignment(data) {
   try {
-    const response = await axios.put(`${link}/assignment/update`, data, configs);
+    const token = localStorage.getItem('accessToken');
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      }
+    };
+    const response = await axios.post(`${link}/assignment/update`, data, config);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -70,6 +96,13 @@ export async function editAssignment(data) {
 
 export async function deleteAssignment(data) {
   try {
+    const token = localStorage.getItem('accessToken');
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
     const response = await axios.put(`${link}/assignment/delete`, data, config);
     return response.data;
   } catch (err) {
@@ -79,7 +112,14 @@ export async function deleteAssignment(data) {
 
 export async function UpdateSubmittedAssignment(data) {
   try {
-    const response = await axios.put(`${link}/submission/update`, data, configs);
+    const token = localStorage.getItem('accessToken');
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      }
+    };
+    const response = await axios.put(`${link}/submission/update`, data, config);
     return response.data;
   } catch (err) {
     console.log(err);

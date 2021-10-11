@@ -63,7 +63,6 @@ export default function RegisterView() {
       state.password = '';
       state.confirmPassword = '';
     } catch (err) {
-      console.log(err);
       notify(err);
     }
   };

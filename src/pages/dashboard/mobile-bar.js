@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
+import ReactPlaceholder from 'react-placeholder';
+import { profilePlaceholder } from '../../components/public/placeholder';
 import UserDataContext from '../../utilities/context/userData';
 
 const MobileBar = ({ setToggle, toggle }) => {
@@ -48,7 +50,9 @@ const MobileBar = ({ setToggle, toggle }) => {
       </svg>
       <button type="submit" className="box1 space-x-2 xl:justify-start focus-ring">
         <span className="text-xs font-bold text-blue-one">{state.name}</span>
-        <img src={state.avatar} alt="IMG" className="w-10 h-10 rounded-full" />
+        <ReactPlaceholder ready={state.avatar} customPlaceholder={profilePlaceholder}>
+          <img src={state.avatar} alt="IMG" className="w-10 h-10 rounded-full" />
+        </ReactPlaceholder>
       </button>
     </div>
   );

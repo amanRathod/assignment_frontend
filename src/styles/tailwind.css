@@ -15,7 +15,6 @@
   .bg-gradient {
     @apply bg-gradient-to-r from-black-base to-blue-two;
   }
-  
   .btn {
     @apply py-2 max-w-xs px-4 mr-4 mt-4 font-bold rounded-2xl bg-blue-five text-white tracking-tighter text-base focus:outline-none  focus:ring-2 focus:ring-offset-2 duration-500 focus:ring-blue-seven;
   }

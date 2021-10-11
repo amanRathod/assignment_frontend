@@ -20,8 +20,6 @@ const SubmitAssignment = ({ data, id, setId }) => {
   const assignmentAccepted =
     submittedAssignment && submittedAssignment.submission_status === 'accepted';
 
-  console.log('subb', submittedAssignment);
-
   // upload assignment
   const handleFileUpload = (e) => {
     const linkObject = e.target.files[0];
