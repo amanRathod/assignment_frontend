@@ -96,7 +96,7 @@ export default function LoginView() {
         </div>
         <p className="mt-4">or Login with</p>
         <button type="submit" className="text-white bg-red-secondary btn">
-          <a href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fauth%2Fgoogle&client_id=845801222492-g34p0uiarsilajl4bf0uqolj2smg9do6.apps.googleusercontent.com&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email">
+          <a href="https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https%3A%2F%2Fassignment-managements.herokuapp.com%2Fauth%2Fgoogle&client_id=845801222492-g34p0uiarsilajl4bf0uqolj2smg9do6.apps.googleusercontent.com&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email">
             Google
           </a>
         </button>
