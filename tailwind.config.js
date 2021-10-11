@@ -42,7 +42,7 @@ module.exports = {
       black: {
         left: '#17191ad0',
         right: '#352d2d',
-        borders: '',
+        borders: '#352d2d',
         base: '#414141',
         dark: '#222831'
       },
@@ -111,10 +111,6 @@ module.exports = {
         orange: '#ffab91'
       }
     }
-    // backgroundImage: ({
-    //   'work': "url('../asserts/images/work.svg')",
-    //   'hero-sm': "url('/storage/img/sys/sm-hero.jpg')",
-    // }),
   },
   variants: {
     extend: {
