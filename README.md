@@ -43,7 +43,7 @@ API Docs -> [https://documenter.getpostman.com/view/15820246/UV5RoMHP](https://d
 <br>
 <br>
 
-# Overall Functionlity
+# Overall Functionality
 - Admin can create, edit and delete assignments 
 - Admin can assign Students to Teaching Assistant
 - Admin can assign assignment to particular Teaching Assistant
