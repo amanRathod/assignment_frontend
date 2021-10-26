@@ -9,7 +9,6 @@ import FormInputPassword from '../../components/input/password';
 import ValidateEmail from '../../utilities/validation/email';
 import { UserLogin } from '../../services/auth';
 import notify from '../../components/public/notification';
-import UserSecurity from '../../asserts/images/UserSecurity.svg';
 
 export default function LoginView() {
   const [state, setState] = useState({
