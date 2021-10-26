@@ -103,7 +103,7 @@ export default function LoginView() {
         <p className="mt-4">
           Don't have an account?{' '}
           <Link to="/register" className="text-color">
-            Singup
+            SignUp
           </Link>
         </p>
       </form>

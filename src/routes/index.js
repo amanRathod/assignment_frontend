@@ -5,6 +5,7 @@ import Theme from '../constants/theme';
 import ThemeContext from '../utilities/context/theme';
 import UserAuthListener from '../constants/user-auth-listener';
 import UserContext from '../utilities/context/user';
+import renderLoader from '../utilities/objects/loader';
 
 const PrivateRoute = lazy(() => import('./private-route'));
 const PublicRoute = lazy(() => import('./public-route'));
@@ -17,12 +18,6 @@ const ResetPassword = lazy(() => import('../views/public/set-password'));
 const Dashboard = lazy(() => import('../views/private/dashboard'));
 const PersonalDetails = lazy(() => import('../views/private/personal-details'));
 
-const load = () => (
-  <div>
-    <h1>Loading...</h1>
-  </div>
-);
-
 const App = () => {
   const user = UserAuthListener();
   const { theme, setTheme } = Theme();
@@ -30,7 +25,7 @@ const App = () => {
     <UserContext.Provider value={{ user }}>
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <Router>
-          <Suspense fallback={load()}>
+          <Suspense fallback={renderLoader()}>
             <Switch>
               <PublicRoute exact path={ROUTES.LOGIN} component={Login} />
               <PublicRoute exact path={ROUTES.HOME} component={Home} />
