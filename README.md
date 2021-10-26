@@ -8,11 +8,11 @@ Assignment Management is a highly scalable and high performant one stop solution
 
 # Application Links
 
-Frontend Code -> [https://github.com/amanRathod/student_frontened](https://github.com/amanRathod/student_frontened)
+Frontend Code -> [https://github.com/amanRathod/assignment_frontend](https://github.com/amanRathod/assignment_frontend)
 <br>
 Deployed URL -> [https://assignment-management.netlify.app](https://assignment-management.netlify.app)
 <br>
-Backend Code -> [https://github.com/amanRathod/student_backened](https://github.com/amanRathod/student_backened)
+Backend Code -> [https://github.com/amanRathod/assignment_backend](https://github.com/amanRathod/assignment_backend)
 <br>
 API Docs -> [https://documenter.getpostman.com/view/15820246/UV5RoMHP](https://documenter.getpostman.com/view/15820246/UV5RoMHP)
 
@@ -43,7 +43,7 @@ API Docs -> [https://documenter.getpostman.com/view/15820246/UV5RoMHP](https://d
 <br>
 <br>
 
-# Overall Functionlity
+# Overall Functionality
 - Admin can create, edit and delete assignments 
 - Admin can assign Students to Teaching Assistant
 - Admin can assign assignment to particular Teaching Assistant
