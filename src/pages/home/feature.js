@@ -30,7 +30,7 @@ const Features = () => (
         <div className="order-2 col-span-2 md:order-1 xl:col-span-3">
           <img
             rel="preload"
-            src="https://bucket-007.s3.ap-south-1.amazonaws.com/Work+Hard-06.svg"
+            src="https://assignment-management.s3.amazonaws.com/Work+Hard-06.svg"
             alt="svg"
           />
         </div>
