@@ -69,7 +69,7 @@ const PersonalDetails = () => {
         <div className="box1 col-span-2 m-5">
           <img
             rel="preload"
-            src="https://bucket-007.s3.ap-south-1.amazonaws.com/book-right-and-wrong-by-oblik-studio.svg"
+            src="https://assignment-management.s3.amazonaws.com/book-right-and-wrong-by-oblik-studio.svg"
             alt="details"
           />
         </div>

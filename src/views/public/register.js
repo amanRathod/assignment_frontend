@@ -72,7 +72,7 @@ export default function RegisterView() {
       <ToastContainer />
       <form onSubmit={_handleSubmit} className="box2 bg-white">
         <img
-          src="https://bucket-007.s3.ap-south-1.amazonaws.com/Registration.svg"
+          src="https://assignment-management.s3.amazonaws.com/Registration.svg"
           alt="Register"
           className="h-16 w-16"
         />
