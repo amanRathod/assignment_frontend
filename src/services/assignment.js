@@ -1,7 +1,7 @@
 import axios from 'axios';
 import notify from '../components/public/notification';
 
-const link = 'http://localhost:5000/api/v1';
+const link = 'https://assignment-managements.herokuapp.com/api/v1';
 
 const token = localStorage.getItem('accessToken');
 const config = {
