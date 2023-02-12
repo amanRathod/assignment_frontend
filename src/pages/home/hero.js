@@ -17,7 +17,7 @@ const Hero = () => (
       <div className="order-2 col-span-2 md:order-2 xl:col-span-3">
         <img
           rel="preload"
-          src="https://assignment-management.s3.amazonaws.com/slack-trello-screens-by-oblik-studio.svg"
+          src="https://assignment-managements.s3.ap-south-1.amazonaws.com/slack-trello-screens-by-oblik-studio.svg"
           alt="Hero"
         />
       </div>

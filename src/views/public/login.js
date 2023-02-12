@@ -58,7 +58,7 @@ export default function LoginView() {
       <ToastContainer />
       <form className="box2 bg-white">
         <img
-          src="https://assignment-management.s3.amazonaws.com/User+Security.svg"
+          src="https://assignment-managements.s3.ap-south-1.amazonaws.com/User+Security.svg"
           alt="svg"
           className="h-16 w-16"
         />

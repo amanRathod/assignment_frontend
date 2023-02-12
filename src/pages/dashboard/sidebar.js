@@ -89,7 +89,7 @@ const Sidebar = ({ toggle }) => {
                   }`}
                 >
                   <UserGroupIcon className="icon1" />
-                  <span className="flex-1">Teaching Assistant</span>
+                  <span className="flex-1 cursor-pointer">Teaching Assistant</span>
                 </a>
               </li>
               <li className={`${state.userType === 'Student' && 'hidden'}`}>
@@ -101,7 +101,7 @@ const Sidebar = ({ toggle }) => {
                   }`}
                 >
                   <UserGroupIcon className="icon1" />
-                  <span className="flex-1">Students</span>
+                  <span className="flex-1 cursor-pointer">Students</span>
                 </a>
               </li>
             </ReactPlaceholder>
@@ -110,11 +110,11 @@ const Sidebar = ({ toggle }) => {
                 onClick={() => handleNav('profile')}
                 aria-hidden="true"
                 className={`sidebar-nav ${
-                  state.currentNav === 'profile' && 'bg-current-Navbar focus-ring'
+                  state.currentNav === 'profile' && 'bg-current-Navbar focus-ring cursor-pointer'
                 }`}
               >
                 <UserIcon className="icon1" />
-                <span className="flex-1">Profile</span>
+                <span className="flex-1 cursor-pointer">Profile</span>
               </a>
             </li>
             <li>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 import notify from '../components/public/notification';
 
-const link = 'https://assignment-managements.herokuapp.com/api/v1';
+const link = 'http://localhost:5000/api/v1';
 
 const token = localStorage.getItem('accessToken');
 

@@ -12,7 +12,7 @@ const Topbar = () => (
     <div className="flex justify-between flex-1 space-x-4 md:justify-end">
       <div className="relative w-full md:max-w-xs">
         <img
-          src="https://assignment-management.s3.amazonaws.com/planning-sheets-of-paper-coffee-by-oblik-studio.svg"
+          src="https://assignment-managements.s3.ap-south-1.amazonaws.com/planning-sheets-of-paper-coffee-by-oblik-studio.svg"
           alt="logo"
           className="h-32 w-full"
         />

@@ -25,7 +25,7 @@ const Action = () => {
             state.currentNav === 'all' && 'bg-current-Navbar'
           }`}
         >
-          <span className="dark-nine opacity-70">All</span>
+          <span className="dark-nine opacity-70 cursor-pointer">All</span>
         </div>
         <div
           onClick={() => {
@@ -36,7 +36,7 @@ const Action = () => {
             state.currentNav === 'open' && 'bg-current-Navbar focus-ring'
           } ${state.userType === 'Admin' && 'hidden'}`}
         >
-          <span className="dark-nine opacity-70">Open</span>
+          <span className="dark-nine opacity-70 cursor-pointer">Open</span>
         </div>
         <div
           onClick={() => {
@@ -47,7 +47,7 @@ const Action = () => {
             state.currentNav === 'complete' && 'bg-current-Navbar'
           } ${state.userType === 'Admin' && 'hidden'}`}
         >
-          <span className="dark-nine opacity-70">Complete</span>
+          <span className="dark-nine opacity-70 cursor-pointer">Complete</span>
         </div>
         <div
           onClick={() => {
@@ -58,7 +58,7 @@ const Action = () => {
             state.currentNav === 'missing' && 'bg-current-Navbar'
           } ${state.userType !== 'Student' && 'hidden'} `}
         >
-          <span className="dark-nine opacity-70">Missing</span>
+          <span className="dark-nine opacity-70 cursor-pointer">Missing</span>
         </div>
         <div
           onClick={() => {
@@ -69,7 +69,7 @@ const Action = () => {
             state.currentNav === 'create' && 'bg-current-Navbar'
           } ${state.userType !== 'Admin' && 'hidden'} `}
         >
-          <span className="dark-nine opacity-70">Create</span>
+          <span className="dark-nine opacity-70 cursor-pointer">Create</span>
         </div>
         <div
           onClick={() => {
@@ -80,7 +80,7 @@ const Action = () => {
             state.currentNav === 'assign' && 'bg-current-Navbar'
           } ${state.userType !== 'Admin' && 'hidden'} `}
         >
-          <span className="dark-nine opacity-70">Assign</span>
+          <span className="dark-nine opacity-70 cursor-pointer">Assign</span>
         </div>
       </nav>
     </div>
