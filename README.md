@@ -10,7 +10,7 @@ Assignment Management is a highly scalable and high performant one stop solution
 
 Frontend Code -> [https://github.com/amanRathod/assignment_frontend](https://github.com/amanRathod/assignment_frontend)
 <br>
-Deployed URL -> [https://assignment-management.netlify.app](https://assignment-management.netlify.app)
+Deployed URL -> [https://assignment-management.vercel.app/](https://assignment-management.vercel.app/)
 <br>
 Backend Code -> [https://github.com/amanRathod/assignment_backend](https://github.com/amanRathod/assignment_backend)
 <br>
