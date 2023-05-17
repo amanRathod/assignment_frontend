@@ -9,6 +9,7 @@ import DarkMode from '../../components/public/dark_mode';
 import UserDataContext from '../../utilities/context/userData';
 import { profilePlaceholder, sidebarPlaceholder } from '../../components/public/placeholder';
 import notify from '../../components/public/notification';
+import { getDummyPicture } from '../../constants/theme';
 
 const Sidebar = ({ toggle }) => {
   const history = useHistory();
@@ -39,7 +40,7 @@ const Sidebar = ({ toggle }) => {
       history.push('/login');
       notify({
         type: 'success',
-        message: 'Logout successfully'
+        message: 'Logout successfully',
       });
     } catch (err) {
       console.log(err);
@@ -131,7 +132,7 @@ const Sidebar = ({ toggle }) => {
       </div>
       <button type="submit" className="profile-bar">
         <ReactPlaceholder ready={state.avatar} customPlaceholder={profilePlaceholder}>
-          <img src={state.avatar} alt="profile" className="rounded-full w-14 h-14" />
+          <img src={state.avatar || getDummyPicture(`${state.name}`)} alt="profile" className="rounded-full w-14 h-14" />
         </ReactPlaceholder>
         <div className="col xl:items-start">
           <span className="font-bold dark-eight">{state.name}</span>
@@ -151,5 +152,5 @@ const Sidebar = ({ toggle }) => {
 export default Sidebar;
 // proptype validation
 Sidebar.propTypes = {
-  toggle: PropTypes.bool.isRequired
+  toggle: PropTypes.bool.isRequired,
 };

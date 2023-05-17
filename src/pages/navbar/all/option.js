@@ -16,7 +16,7 @@ const Option = ({ data, id, setId }) => {
       dispatch({
         type: 'gradeSubmittedAssignment',
         fieldName: 'gradeSubmittedAssignment',
-        payload: data.submission
+        payload: data.submission,
       });
     }
   }, [id]);
@@ -25,7 +25,7 @@ const Option = ({ data, id, setId }) => {
     if (data.assigned_TA[0]) {
       notify({
         type: 'warning',
-        message: 'TA is already assigned to this assignment'
+        message: 'TA is already assigned to this assignment',
       });
     } else {
       setCurrentOption(value);
@@ -55,7 +55,13 @@ const Option = ({ data, id, setId }) => {
         className="btn bg-red-five"
         type="submit"
         aria-hidden="true"
-        onClick={() => dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: 'grade' })}
+        onClick={() =>
+          dispatch({
+            type: 'currentNav',
+            fieldName: 'currentNav',
+            payload: 'grade',
+          })
+        }
       >
         View reports
       </button>

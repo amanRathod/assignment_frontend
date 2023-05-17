@@ -11,7 +11,7 @@ const notify = ({ type, message }) => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined
+        progress: undefined,
       });
       break;
     case 'success':
@@ -22,7 +22,7 @@ const notify = ({ type, message }) => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined
+        progress: undefined,
       });
       break;
     case 'warning':
@@ -33,7 +33,7 @@ const notify = ({ type, message }) => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined
+        progress: undefined,
       });
       break;
     case 'error':
@@ -44,7 +44,7 @@ const notify = ({ type, message }) => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined
+        progress: undefined,
       });
       break;
     default:
@@ -55,7 +55,7 @@ const notify = ({ type, message }) => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined
+        progress: undefined,
       });
   }
 };

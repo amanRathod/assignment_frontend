@@ -14,7 +14,7 @@ const Grade = () => {
         submittedAssignmentId: id,
         assignmentId: state.gradeSubmittedAssignment[0].assignmentId,
         grade,
-        submission_status: 'accepted'
+        submission_status: 'accepted',
       };
       setGrade('');
       const response = await evaluate(data);

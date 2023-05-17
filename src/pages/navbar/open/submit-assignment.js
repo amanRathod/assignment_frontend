@@ -39,7 +39,7 @@ const SubmitAssignment = ({ data, id, setId }) => {
       if (assignmentObject === '') {
         notify({
           type: 'warning',
-          message: 'Please select a file'
+          message: 'Please select a file',
         });
       } else {
         const response = await SubmitAssignmentApi(formData);
@@ -63,7 +63,7 @@ const SubmitAssignment = ({ data, id, setId }) => {
       if (assignmentObject === '') {
         notify({
           type: 'warning',
-          message: 'Please select a file to Update assignment'
+          message: 'Please select a file to Update assignment',
         });
       } else {
         const response = await UpdateSubmittedAssignment(formData);
@@ -178,5 +178,5 @@ export default SubmitAssignment;
 SubmitAssignment.propTypes = {
   data: PropTypes.object.isRequired,
   id: PropTypes.string,
-  setId: PropTypes.func.isRequired
+  setId: PropTypes.func.isRequired,
 };

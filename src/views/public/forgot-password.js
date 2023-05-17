@@ -12,14 +12,17 @@ import { UserForgotPassword } from '../../services/auth';
 const ForgotPassword = () => {
   const [state, setState] = useState({
     email: '',
-    error1: ''
+    error1: '',
   });
   const isInputEmpty = state.email === '';
 
   const handleChange = (e) => {
     e.persist();
     ValidateEmail({ value: e.target.value, setState });
-    setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    setState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const _handleSubmit = async (e) => {

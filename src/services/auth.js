@@ -1,9 +1,9 @@
 import axios from 'axios';
 import notify from '../components/public/notification';
 
-const link = 'https://assignment-managements.onrender.com/api/v1/user';
+const link = 'http://localhost:5000/api/v1/user';
 const config = {
-  headers: { 'Content-type': 'application/json' }
+  headers: { 'Content-type': 'application/json' },
 };
 
 export async function UserLogin(data) {
@@ -13,7 +13,7 @@ export async function UserLogin(data) {
   } catch (err) {
     notify({
       type: 'error',
-      message: err.message
+      message: err.message,
     });
   }
 }

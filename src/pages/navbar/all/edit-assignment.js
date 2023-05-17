@@ -12,5 +12,5 @@ const EditAssignment = ({ assignment }) => (
 export default EditAssignment;
 
 EditAssignment.propTypes = {
-  assignment: PropTypes.object.isRequired
+  assignment: PropTypes.object.isRequired,
 };

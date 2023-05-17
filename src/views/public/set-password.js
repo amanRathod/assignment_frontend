@@ -19,7 +19,7 @@ const SetPasswordView = () => {
     confirmPassword: '',
     error2: '',
     error3: '',
-    token
+    token,
   });
 
   const isInputEmpty =
@@ -35,12 +35,19 @@ const SetPasswordView = () => {
         ValidatePassword({ value: e.target.value, setState });
         break;
       case 'confirmPassword':
-        ValidateConfirmPassword({ value: e.target.value, setState, password: state.password });
+        ValidateConfirmPassword({
+          value: e.target.value,
+          setState,
+          password: state.password,
+        });
         break;
       default:
         break;
     }
-    setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    setState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   }
 
   const _handleSubmit = async (e) => {
@@ -52,7 +59,7 @@ const SetPasswordView = () => {
     } catch (error) {
       notify({
         type: 'error',
-        message: error.message
+        message: error.message,
       });
     }
   };

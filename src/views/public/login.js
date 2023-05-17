@@ -15,7 +15,7 @@ export default function LoginView() {
     email: '',
     password: '',
     error1: '',
-    error2: ''
+    error2: '',
   });
 
   const isInputEmpty = state.email === '' || state.password === '';
@@ -26,7 +26,10 @@ export default function LoginView() {
     if (e.target.name === 'email') {
       ValidateEmail({ value: e.target.value, setState });
     }
-    setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    setState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const _handleSubmit = async (e) => {

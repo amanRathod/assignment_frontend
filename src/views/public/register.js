@@ -22,7 +22,7 @@ export default function RegisterView() {
     confirmPassword: '',
     error1: '',
     error2: '',
-    error3: ''
+    error3: '',
   });
   const isInputEmpty =
     state.name === '' ||
@@ -44,12 +44,19 @@ export default function RegisterView() {
         ValidatePassword({ value: e.target.value, setState });
         break;
       case 'confirmPassword':
-        ValidateConfirmPassword({ value: e.target.value, setState, password: state.password });
+        ValidateConfirmPassword({
+          value: e.target.value,
+          setState,
+          password: state.password,
+        });
         break;
       default:
         break;
     }
-    setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    setState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const _handleSubmit = async (e) => {

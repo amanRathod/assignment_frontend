@@ -18,7 +18,7 @@ const Form = ({ assignment }) => {
     dueDate: assignment ? moment(assignment.dueDate).format('YYYY-MM-DD') : '',
     totalMarks: assignment ? assignment.totalMarks : '',
     temperoryLink: '',
-    assignment: ''
+    assignment: '',
   });
 
   const isInputEmpty =
@@ -31,7 +31,7 @@ const Form = ({ assignment }) => {
   const handleChange = (e) => {
     setState({
       ...state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -41,7 +41,7 @@ const Form = ({ assignment }) => {
     setState({
       ...state,
       temperoryLink,
-      assignment: linkObject
+      assignment: linkObject,
     });
   };
 
@@ -59,13 +59,17 @@ const Form = ({ assignment }) => {
       if (state.assignment === '') {
         notify({
           type: 'warning',
-          message: 'Please select a file'
+          message: 'Please select a file',
         });
       } else {
         const response = await createAssignment(formData);
         notify(response);
         if (response.type === 'success') {
-          dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: 'all' });
+          dispatch({
+            type: 'currentNav',
+            fieldName: 'currentNav',
+            payload: 'all',
+          });
         }
       }
     } catch (err) {
@@ -88,7 +92,11 @@ const Form = ({ assignment }) => {
       const response = await editAssignment(formData);
       notify(response);
       if (response.type === 'success') {
-        dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: 'all' });
+        dispatch({
+          type: 'currentNav',
+          fieldName: 'currentNav',
+          payload: 'all',
+        });
       }
     } catch (err) {
       console.log(err);
@@ -98,12 +106,16 @@ const Form = ({ assignment }) => {
   const handleDelete = async () => {
     try {
       const data = {
-        assignmentId: assignment._id
+        assignmentId: assignment._id,
       };
       const response = await deleteAssignment(data);
       notify(response);
       if (response.type === 'success') {
-        dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: 'all' });
+        dispatch({
+          type: 'currentNav',
+          fieldName: 'currentNav',
+          payload: 'all',
+        });
       }
     } catch (err) {
       console.log(err);
@@ -222,5 +234,5 @@ export default Form;
 
 // propType validation
 Form.propTypes = {
-  assignment: PropTypes.object
+  assignment: PropTypes.object,
 };

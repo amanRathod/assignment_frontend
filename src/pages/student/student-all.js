@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import UserDataContext from '../../utilities/context/userData';
+import { getDummyPicture } from '../../constants/theme';
 
 const Student = () => {
   const { state } = useContext(UserDataContext);
@@ -10,7 +11,7 @@ const Student = () => {
         {state.students ? (
           state.students.map((student, index) => (
             <div key={index} className="flex hover items-center w-full space-x-4 focus-ring">
-              <img src={student.avatar} alt="profile" className="rounded-full w-14 h-14" />
+              <img src={student.avatar || getDummyPicture(`${student.name}`)} alt="profile" className="rounded-full w-14 h-14" />
               <div className="flex flex-col items-start flex-1 text-sm">
                 <span className="font-bold dark-nine ">{student.name}</span>
                 <span className="text-sm font-bold dark-eight opacity-80">

@@ -10,7 +10,7 @@ const Details = ({ data, id }) => {
     dispatch({
       type: 'gradeSubmittedAssignment',
       fieldName: 'gradeSubmittedAssignment',
-      payload: data.submission
+      payload: data.submission,
     });
     dispatch({ type: 'currentNav', fieldName: 'currentNav', payload: 'grade' });
   };
@@ -63,5 +63,5 @@ export default Details;
 // propType validation
 Details.propTypes = {
   data: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 };

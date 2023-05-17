@@ -4,6 +4,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import notify from '../../../components/public/notification';
 import { assignTA } from '../../../services/user';
 import UserDataContext from '../../../utilities/context/userData';
+import { getDummyPicture } from '../../../constants/theme';
 
 const AssignAssignment = ({ assignment, id, setId }) => {
   const { state } = useContext(UserDataContext);
@@ -26,13 +27,13 @@ const AssignAssignment = ({ assignment, id, setId }) => {
       if (selectedTA.length !== 1) {
         notify({
           type: 'warning',
-          message: 'Please select one TA'
+          message: 'Please select one TA',
         });
         return;
       }
       const data = {
         ta_id: selectedTA,
-        assignmentId: id
+        assignmentId: id,
       };
       const response = await assignTA(data);
       notify(response);
@@ -69,7 +70,7 @@ const AssignAssignment = ({ assignment, id, setId }) => {
                 className="flex hover rounded-lg items-center w-full space-x-4 focus-ring"
                 // onClick={() => handleToggle(ta._id)}
               >
-                <img src={ta.avatar} alt={ta.name} className="rounded-full w-14 h-14" />
+                <img src={ta.avatar || getDummyPicture(`${ta.name}`)} alt={ta.name} className="rounded-full w-14 h-14" />
                 <div className="flex flex-col items-start flex-1 text-sm">
                   <span className="font-bold dark-nine ">{ta.name}</span>
                   <span className="text-sm font-bold dark-eight opacity-50">View profile</span>

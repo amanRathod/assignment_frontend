@@ -17,5 +17,5 @@ export default function FormInputName({ value, handleChange, name }) {
 FormInputName.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };

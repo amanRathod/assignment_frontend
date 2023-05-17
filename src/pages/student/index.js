@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import UserDataContext from '../../utilities/context/userData';
 import { assignStudentsToTA, removeStudentFromTA } from '../../services/user';
 import notify from '../../components/public/notification';
+import { getDummyPicture } from '../../constants/theme';
 
 const Student = ({ ta, id, setId }) => {
   const { state, dispatch } = useContext(UserDataContext);
@@ -26,7 +27,7 @@ const Student = ({ ta, id, setId }) => {
     try {
       const data = {
         ta_id: ta._id,
-        student_ids: selectedStudents
+        student_ids: selectedStudents,
       };
 
       const response = await assignStudentsToTA(data);
@@ -44,7 +45,7 @@ const Student = ({ ta, id, setId }) => {
     try {
       const data = {
         ta_id: ta._id,
-        student_ids: selectedStudents
+        student_ids: selectedStudents,
       };
       const response = await removeStudentFromTA(data);
       if (response.type === 'success') {
@@ -83,7 +84,7 @@ const Student = ({ ta, id, setId }) => {
               key={index}
               className="flex hover rounded-lg items-center w-full space-x-4 focus-ring"
             >
-              <img src={student.avatar} alt="profile" className="rounded-full w-14 h-14" />
+              <img src={student.avatar || getDummyPicture(`${student.name}`)} alt="profile" className="rounded-full w-14 h-14" />
               <div className="flex flex-col items-start flex-1 text-sm">
                 <span className="font-bold dark-nine ">{student.name}</span>
                 <span className="text-sm font-bold dark-eight opacity-80">

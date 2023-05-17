@@ -3,7 +3,7 @@ const ValidatePassword = ({ value, setState }) => {
   if (!regPassword.test(value)) {
     setState((prevState) => ({
       ...prevState,
-      error2: 'password should be minimum eight characters, at least one uppercase and one number'
+      error2: 'password should be minimum eight characters, at least one uppercase and one number',
     }));
   } else {
     setState((prevState) => ({ ...prevState, error2: '' }));

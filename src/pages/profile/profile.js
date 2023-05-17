@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import notify from '../../components/public/notification';
 import { UserUpdate } from '../../services/user';
 import UserDataContext from '../../utilities/context/userData';
+import { getDummyPicture } from '../../constants/theme';
 
 const Profile = () => {
   const { state } = useContext(UserDataContext);
@@ -10,7 +11,7 @@ const Profile = () => {
     name: state.name,
     phone: state.phone,
     imageObject: '',
-    avatar: state.avatar
+    avatar: state.avatar,
   });
 
   const handleImageUpload = async (e) => {
@@ -20,13 +21,16 @@ const Profile = () => {
     setProfile({
       ...state,
       avatar: temperoryLink,
-      imageObject: fileImage
+      imageObject: fileImage,
     });
   };
 
   const handleChange = (e) => {
     e.persist();
-    setProfile((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    setProfile((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleUpdate = async (e) => {
@@ -80,7 +84,7 @@ const Profile = () => {
         </label>
         <div className="mt-1 flex items-center">
           <span className="inline-block h-40 w-40 rounded-full overflow-hidden">
-            <img src={`${profile.avatar}`} className="" alt="profile" />
+            <img src={profile.avatar || getDummyPicture(`${profile.name}`)} className="" alt="profile" />
           </span>
           <label className="btn ml-3">
             <input

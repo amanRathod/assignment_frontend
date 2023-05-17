@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserDataContext from '../../utilities/context/userData';
 import Student from '../student';
+import { getDummyPicture } from '../../constants/theme';
 
 const TeachingAssistant = () => {
   const { state } = useContext(UserDataContext);
@@ -16,6 +17,9 @@ const TeachingAssistant = () => {
       setId('');
     }
   };
+
+  console.log(state.teaching_assistant);
+
   return (
     <div className="box-border1">
       <ToastContainer />
@@ -30,7 +34,7 @@ const TeachingAssistant = () => {
                 className="flex  hover items-center w-full space-x-4 rounded-lg focus-ring"
                 onClick={() => handleToggle(ta._id)}
               >
-                <img src={ta.avatar} alt={ta.name} className="rounded-full w-14 h-14" />
+                <img src={ta.avatar || getDummyPicture(`${ta.name}`)} alt={ta.name} className="rounded-full w-14 h-14" />
                 <div className="flex flex-col items-start flex-1 text-sm">
                   <span className="font-bold dark-nine ">{ta.name}</span>
                   <span className="text-sm font-bold dark-eight opacity-80">

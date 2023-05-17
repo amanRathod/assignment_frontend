@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 import notify from '../components/public/notification';
 
-const link = 'https://assignment-managements.onrender.com/api/v1';
+const link = 'http://localhost:5000/api/v1';
 
 const token = localStorage.getItem('accessToken');
 
@@ -38,8 +38,8 @@ export async function UserUpdate(data) {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     const response = await axios.put(`${link}/user/updateProfile`, data, config);
@@ -56,8 +56,8 @@ export async function GoogleUserUpdate(data) {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.post(`${link}/user/updateGoogleProfile`, data, config);
     return response.data;
@@ -73,8 +73,8 @@ export async function GetStudentData() {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.get(`${link}/student`, config);
     return response.data;
@@ -90,8 +90,8 @@ export async function GetTAData() {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.get(`${link}/TA`, config);
     return response.data;
@@ -107,15 +107,15 @@ export async function GetAdminData() {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.get(`${link}/admin`, config);
     return response.data;
   } catch (err) {
     notify({
       type: 'error',
-      message: err.message
+      message: err.message,
     });
   }
 }
@@ -127,8 +127,8 @@ export async function assignStudentsToTA(data) {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     const response = await axios.post(`${link}/admin/student_to_TA`, data, config);
@@ -145,8 +145,8 @@ export async function removeStudentFromTA(data) {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     const response = await axios.post(`${link}/admin/remove-student`, data, config);
@@ -163,8 +163,8 @@ export async function assignTA(data) {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     const response = await axios.post(`${link}/assignment/assign-to-TA`, data, config);

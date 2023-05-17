@@ -6,14 +6,14 @@ module.exports = {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
       impliedStrict: true,
-      classes: true
-    }
+      classes: true,
+    },
   },
   env: {
     browser: true,
     node: true,
     jquery: true,
-    jest: true
+    jest: true,
   },
   rules: {
     'react-hooks/rules-of-hooks': 'error',
@@ -23,21 +23,21 @@ module.exports = {
     'prefer-const': [
       'error',
       {
-        destructuring: 'all'
-      }
+        destructuring: 'all',
+      },
     ],
     'arrow-body-style': [2, 'as-needed'],
     'no-unused-expressions': [
       2,
       {
-        allowTaggedTemplates: true
-      }
+        allowTaggedTemplates: true,
+      },
     ],
     'no-param-reassign': [
       2,
       {
-        props: false
-      }
+        props: false,
+      },
     ],
     'no-console': 'off',
     'import/prefer-default-export': 1,
@@ -61,8 +61,8 @@ module.exports = {
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: ['.js', '.jsx']
-      }
+        extensions: ['.js', '.jsx'],
+      },
     ],
     radix: 0,
     'no-shadow': 'off',
@@ -71,24 +71,25 @@ module.exports = {
       'single',
       {
         avoidEscape: true,
-        allowTemplateLiterals: true
-      }
+        allowTemplateLiterals: true,
+      },
     ],
-    'prettier/prettier': [
-      'error',
-      {
-        trailingComma: 'none',
-        singleQuote: true,
-        printWidth: 100
-      }
-    ],
+    // 'prettier/prettier': [
+    //   'error',
+    //   {
+    //     // trailingComma: 'none',
+    //     singleQuote: true,
+    //     printWidth: 100,
+    //   },
+    // ],
+    'prettier/prettier': 'off',
     'jsx-a11y/href-no-hash': 'off',
     'jsx-a11y/anchor-is-valid': [
       'warn',
       {
-        aspects: ['invalidHref']
-      }
-    ]
+        aspects: ['invalidHref'],
+      },
+    ],
   },
-  plugins: ['prettier', 'react', 'react-hooks']
+  plugins: ['prettier', 'react', 'react-hooks'],
 };

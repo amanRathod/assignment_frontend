@@ -1,14 +1,14 @@
 import axios from 'axios';
 import notify from '../components/public/notification';
 
-const link = 'https://assignment-managements.onrender.com/api/v1';
+const link = 'http://localhost:5000/api/v1';
 
 const token = localStorage.getItem('accessToken');
 const config = {
   headers: {
     'Content-type': 'application/json',
-    Authorization: `Bearer ${token}`
-  }
+    Authorization: `Bearer ${token}`,
+  },
 };
 
 export async function SubmitAssignmentApi(formData) {
@@ -17,15 +17,15 @@ export async function SubmitAssignmentApi(formData) {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.post(`${link}/submission/`, formData, config);
     return response.data;
   } catch (err) {
     notify({
       type: 'error',
-      message: err.message
+      message: err.message,
     });
   }
 }
@@ -45,8 +45,8 @@ export async function createAssignment(formData) {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     const response = await axios.post(`${link}/assignment/create`, formData, config);
@@ -54,7 +54,7 @@ export async function createAssignment(formData) {
   } catch (err) {
     notify({
       type: 'error',
-      message: err.message
+      message: err.message,
     });
   }
 }
@@ -65,15 +65,15 @@ export async function evaluate(data) {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.post(`${link}/submission/evaluate`, data, config);
     return response.data;
   } catch (err) {
     notify({
       type: 'error',
-      message: err.message
+      message: err.message,
     });
   }
 }
@@ -84,8 +84,8 @@ export async function editAssignment(data) {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.post(`${link}/assignment/update`, data, config);
     return response.data;
@@ -100,8 +100,8 @@ export async function deleteAssignment(data) {
     const config = {
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.put(`${link}/assignment/delete`, data, config);
     return response.data;
@@ -116,8 +116,8 @@ export async function UpdateSubmittedAssignment(data) {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     const response = await axios.put(`${link}/submission/update`, data, config);
     return response.data;

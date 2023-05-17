@@ -16,5 +16,5 @@ export default function FormInputEmail({ value, handleChange }) {
 
 FormInputEmail.propTypes = {
   value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
 };

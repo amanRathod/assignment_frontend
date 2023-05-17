@@ -68,7 +68,7 @@ const DashboardView = () => {
     teaching_assistant: [],
     submissions: [],
     students: [],
-    gradeSubmittedAssignment: []
+    gradeSubmittedAssignment: [],
   };
 
   const [state, dispatch] = useReducer(reducer, InitialState);
@@ -93,23 +93,35 @@ const DashboardView = () => {
       dispatch({
         type: 'registration_no',
         fieldName: 'registration_no',
-        payload: data.registration_no
+        payload: data.registration_no,
       });
-      dispatch({ type: 'institute', fieldName: 'institute', payload: data.institute });
-      dispatch({ type: 'assignment', fieldName: 'assignment', payload: assignments });
+      dispatch({
+        type: 'institute',
+        fieldName: 'institute',
+        payload: data.institute,
+      });
+      dispatch({
+        type: 'assignment',
+        fieldName: 'assignment',
+        payload: assignments,
+      });
       dispatch({ type: 'avatar', fieldName: 'avatar', payload: data.avatar });
       dispatch({
         type: 'teaching_assistant',
         fieldName: 'teaching_assistant',
-        payload: ta
+        payload: ta,
       });
       dispatch({
         type: 'submittedAssignment',
         fieldName: 'submittedAssignment',
-        payload: submissions
+        payload: submissions,
       });
       dispatch({ type: 'students', fieldName: 'students', payload: students });
-      dispatch({ type: 'userType', fieldName: 'userType', payload: data.user_type });
+      dispatch({
+        type: 'userType',
+        fieldName: 'userType',
+        payload: data.user_type,
+      });
       dispatch({ type: 'phone', fieldName: 'phone', payload: data.phone });
     } catch (error) {
       console.log(error);

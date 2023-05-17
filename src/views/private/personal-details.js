@@ -17,7 +17,7 @@ const PersonalDetails = () => {
     userType: '',
     registration_no: '',
     dateOfBirth: '',
-    phone: ''
+    phone: '',
   });
 
   const userAuth = Cookies.get('user');
@@ -31,7 +31,7 @@ const PersonalDetails = () => {
   const handleChange = (e) => {
     setState({
       ...state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 

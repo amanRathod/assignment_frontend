@@ -38,4 +38,11 @@ const Theme = (initialTheme) => {
   return { theme, setTheme };
 };
 
+export const getDummyPicture = (
+  keyword,
+  category = 'initials'
+) => `https://avatars.dicebear.com/api/${category}/${encodeURI(
+    keyword
+  )}.svg`;
+
 export default Theme;
