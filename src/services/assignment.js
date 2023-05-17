@@ -1,7 +1,7 @@
 import axios from 'axios';
 import notify from '../components/public/notification';
 
-const link = 'http://localhost:5000/api/v1';
+const link = 'https://assignment-managements.onrender.com/api/v1';
 
 const token = localStorage.getItem('accessToken');
 const config = {
@@ -49,7 +49,11 @@ export async function createAssignment(formData) {
       },
     };
 
-    const response = await axios.post(`${link}/assignment/create`, formData, config);
+    const response = await axios.post(
+      `${link}/assignment/create`,
+      formData,
+      config
+    );
     return response.data;
   } catch (err) {
     notify({
@@ -68,7 +72,11 @@ export async function evaluate(data) {
         Authorization: `Bearer ${token}`,
       },
     };
-    const response = await axios.post(`${link}/submission/evaluate`, data, config);
+    const response = await axios.post(
+      `${link}/submission/evaluate`,
+      data,
+      config
+    );
     return response.data;
   } catch (err) {
     notify({
@@ -87,7 +95,11 @@ export async function editAssignment(data) {
         Authorization: `Bearer ${token}`,
       },
     };
-    const response = await axios.post(`${link}/assignment/update`, data, config);
+    const response = await axios.post(
+      `${link}/assignment/update`,
+      data,
+      config
+    );
     return response.data;
   } catch (err) {
     console.log(err);
